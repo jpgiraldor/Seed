@@ -230,4 +230,21 @@ class Seed extends Model{
 
          
     }
+
+    public static function validate($request){
+        $request->validate([
+            "name" => "required|alpha_num",
+            "brand" => "required|alpha_num",
+            "weight" => "required|numeric",
+            "water" => "required|numeric",
+            "ground" => "required|alpha_num",
+            "drought" => "required|alpha_num",
+            "germination" => "required|numeric",
+            "type" => "required|alpha",
+            "keywords" => "required|alpha",
+            "category" => "required|alpha",
+            "price" => "required|numeric"
+            ]);
+            Seed::create($request->only(['name','brand','weight','water','ground','drought','germination','type','keywords','category','price']));
+    }
 }
