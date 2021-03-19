@@ -6,6 +6,7 @@ class Customer extends Model{
     use HasFactory;
     //attributes id, name, price, created_at, updated_at
     protected $fillable = ['id','username', 'password','email','firstname','lastname','wallet'];
+    
     public function getId(){
         return $this->attributes['id'];
     }

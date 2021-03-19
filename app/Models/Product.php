@@ -8,7 +8,7 @@ use App\Models\Item;
 
 class Product extends Model
 {
-
+    use HasFactory;
     //attributes id, name, price, created_at, updated_at
     protected $fillable = ['name','price'];
 

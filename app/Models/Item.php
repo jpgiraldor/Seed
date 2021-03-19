@@ -9,6 +9,7 @@ use App\Models\Product;
 
 class Item extends Model
 {
+    use HasFactory;
     //attributes id, subtotal, quantity, product_id, order_id, created_at, updated_at
     protected $fillable = ['subtotal','quantity'];
 
