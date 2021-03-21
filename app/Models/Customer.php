@@ -75,7 +75,16 @@ class Customer extends Model{
             Customer::create($request->only(["username","password","email","firstname","lastname","wallet"]));
     }
     
-/*     public function comments(){
-        return $this->hasMany(Comment::class);
-        } */
+    public function address(){
+        return $this->hasMany(Address::class);
+        } 
+
+    public function review(){
+        return $this->hasMany(Review::class);
+        } 
+
+    public function order(){
+        return $this->hasMany(Order::class);
+        } 
+
 }

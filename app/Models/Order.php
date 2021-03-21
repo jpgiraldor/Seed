@@ -76,8 +76,8 @@ class Order extends Model
         $this->attributes['seed_order'] = $new_seed_order;
     }
 
-   /*  public function items(){
-        return $this->hasMany(Item::class);
-    } */
+    public function seed_order(){
+        return $this->hasMany(Seed_order::class);
+    } 
     
 }

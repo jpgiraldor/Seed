@@ -7,9 +7,9 @@
         Products in Cart
             <ul id="errors">
             
-                @foreach($data["products"] as $product)
+                @foreach($data["seeds"] as $seed)
                     <li>
-                    {{ $product->getId() }} - {{ $product->getName() }} : {{ $product->getPrice() }}
+                    {{ $seed->getId() }} - {{ $seed->getName() }} : {{ $seed->getPrice() }}
                     </li>
                 @endforeach
             </ul>
@@ -17,7 +17,7 @@
             Total in cart: {{ $data['total'] }}<br /><br />
             <a href="{{ route('shop.buy') }}">Buy</a>
             <br /><br />
-            <a href="{{ route('shop.removeAll') }}">Remove all products from cart</a>
+            <a href="{{ route('shop.removeAll') }}">Remove all seeds from cart</a>
         </div>
     </div>
 </div>

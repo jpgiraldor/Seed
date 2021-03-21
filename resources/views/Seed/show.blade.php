@@ -18,6 +18,7 @@
                     <b>Product category:</b> {{ $seed->getCategory() }}<br />
                     <b>Product price:</b> {{ $seed->getPrice() }}<br />
                     </ul>
+                    <a href="{{ route('shop.add', ['id'=> $seed->getId()]) }}">Add to cart</a>
                     <form method="post" action="{{ route('seed.delete' , $seed->getId()) }}">
                         {!! csrf_field() !!}
                         <input type="hidden" value="DELETE" />

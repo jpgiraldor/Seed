@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Seed;
 use App\Models\Order;
 use App\Models\Item;
 use Illuminate\Http\Request;
@@ -12,42 +12,42 @@ class ShoppingController extends Controller
     public function index()
     {
         $data = []; //to be sent to the view
-        $data["title"] = "Store products";
-        $data["products"] = Product::all();
+        $data["title"] = "Store seeds";
+        $data["seeds"] = Seed::all();
 
-        return view('shopping.index')->with("data",$data);
+        return view('seed.list')->with("data",$data);
     }
 
     public function cart(Request $request){
         $data = []; //to be sent to the view
-        $data["title"] = "Store products";
+        $data["title"] = "Store seeds";
 
-        $listProductsInCart = array();
+        $listSeedsInCart = array();
         $total = 0;
-        $ids = $request->session()->get("products"); 
+        $ids = $request->session()->get("seeds"); 
         if($ids){
-            $listProductsInCart = Product::findMany($ids);
-            foreach ($listProductsInCart as $product) {
-                $total = $total + $product->getPrice();
+            $listSeedsInCart = Seed::findMany($ids);
+            foreach ($listSeedsInCart as $seed) {
+                $total = $total + $seed->getPrice();
             }
         }
         $data["total"] = $total;
-        $data["products"] = $listProductsInCart;
+        $data["seeds"] = $listSeedsInCart;
 
         return view('shopping.cart')->with("data",$data);
     }
 
     public function add($id, Request $request)
     {
-        $products = $request->session()->get("products");
-        $products[$id] = $id;
-        $request->session()->put('products', $products);
+        $seeds = $request->session()->get("seeds");
+        $seeds[$id] = $id;
+        $request->session()->put('seeds', $seeds);
         return back();
     }
 
     public function removeAll(Request $request)
     {
-        $request->session()->forget('products');
+        $request->session()->forget('seeds');
         return back();
     }
 
@@ -60,17 +60,17 @@ class ShoppingController extends Controller
         $order->save();
         
         $total = 0;
-        $ids = $request->session()->get("products"); 
+        $ids = $request->session()->get("seeds"); 
         if($ids){
-            $listProductsInCart = Product::findMany($ids);
-            foreach ($listProductsInCart as $product) {
+            $listSeedsInCart = Seed::findMany($ids);
+            foreach ($listSeedsInCart as $seed) {
                 $item = new Item();
                 $item->setQuantity(1);
-                $item->setSubTotal($product->getPrice());
-                $item->setProductId($product->getId());
+                $item->setSubTotal($seed->getPrice());
+                $item->setProductId($seed->getId());
                 $item->setOrderId($order->getId());
                 $item->save();
-                $total = $total + $product->getPrice();
+                $total = $total + $seed->getPrice();
             }
         }
 

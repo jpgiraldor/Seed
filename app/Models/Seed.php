@@ -227,9 +227,15 @@ class Seed extends Model{
     public function setPrice($price) : self
     {
         return $this->attributes['price'] = $price;
-
-         
     }
+
+    public function seed_order(){
+        return $this->hasMany(Seed_order::class);
+        }
+
+    public function review(){
+        return $this->hasMany(Review::class);
+        } 
 
     public static function validate($request){
         $request->validate([
