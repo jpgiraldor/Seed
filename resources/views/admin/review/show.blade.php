@@ -11,7 +11,7 @@
                     {{ $data->getSeed }}
                     {{ $data->getScore }}
                     {{ $data->getContent }}
-                    <form method="post" action="{{ route('review.delete' , $data->getId) }}">
+                    <form method="post" action="{{ route('admin.review.delete' , $data->getId) }}">
                         {!! csrf_field() !!}
                         <input type="hidden" value="DELETE" />
                         <button type="submit" class = >click to delete this row base on id</button>

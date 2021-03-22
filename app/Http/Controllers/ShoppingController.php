@@ -15,7 +15,7 @@ class ShoppingController extends Controller
         $data["title"] = "Store seeds";
         $data["seeds"] = Seed::all();
 
-        return view('seed.list')->with("data",$data);
+        return view('customer.seed.list')->with("data",$data);
     }
 
     public function cart(Request $request){
@@ -67,7 +67,7 @@ class ShoppingController extends Controller
                 $item = new Item();
                 $item->setQuantity(1);
                 $item->setSubTotal($seed->getPrice());
-                $item->setProductId($seed->getId());
+                $item->setSeedId($seed->getId());
                 $item->setOrderId($order->getId());
                 $item->save();
                 $total = $total + $seed->getPrice();

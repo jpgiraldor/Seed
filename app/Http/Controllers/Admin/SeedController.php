@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Seed;
 
@@ -11,7 +12,7 @@ class SeedController extends Controller
         $data = []; //to be sent to the view
         $data["title"] = "Create seed"; 
         $data["seeds"] = Seed::all();
-        return view('seed.create')->with("data",$data);
+        return view('admin.seed.create')->with("data",$data);
     }
 
     public function save(Request $request)
@@ -32,13 +33,13 @@ class SeedController extends Controller
     {
         $data = []; //to be sent to the view
         $data["seeds"] = Seed::all();
-        return view('seed.list')->with("data",$data);
+        return view('admin.seed.list')->with("data",$data);
     }
 
     public function show($id){
         try{
         $seed = Seed::findOrFail($id);
-        return view('seed.show')->with("seed",$seed);    
+        return view('admin.seed.show')->with("seed",$seed);    
         }catch(ModelNotFoundException  $e){
             return redirect()->route('home.index');
         }

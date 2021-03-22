@@ -27,7 +27,7 @@
                     <b>Product keywords:</b> {{ $seed->getKeywords() }}<br />
                     <b>Product category:</b> {{ $seed->getCategory() }}<br />
                     <b>Product price:</b> {{ $seed->getPrice() }}<br />
-                    <a href="{{ route('seed.show',$seed->getId()) }}" type = "button" class="btn btn-primary">Show seed</a>
+                    <a href="{{ route('admin.seed.show',$seed->getId()) }}" type = "button" class="btn btn-primary">Show seed</a>
                 </div>
             </div>
 

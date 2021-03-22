@@ -15,7 +15,7 @@
                         @endforeach
                     </ul>
                     @endif
-                    <form method="POST" action="{{ route('seed.save') }}">
+                    <form method="POST" action="{{ route('admin.seed.save') }}">
                         @csrf
                         <input type="text" placeholder="Enter name" name="name" value="{{ old('name') }}" />
                         <input type="text" placeholder="Enter brand" name="brand" value="{{ old('brand') }}" />

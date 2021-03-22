@@ -7,7 +7,7 @@
             <ul id="errors">
                 @foreach($data["review"] as $review)
                 <li>{{ $review->getId() }} - {{ $review->getName() }} : {{ $review->getPrice() }}</li>
-                <a href="{{ route('review.show',$review->getId()) }}" type = "button" class="btn btn-primary">Show product</a>
+                <a href="{{ route('admin.review.show',$review->getId()) }}" type = "button" class="btn btn-primary">Show product</a>
                 </b><br />
                 @endforeach
             </ul>
