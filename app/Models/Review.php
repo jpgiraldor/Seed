@@ -66,14 +66,15 @@ class Review extends Model
 
 
     public static function validate(Request $request){
-        echo $request."hola";
+
         $request->validate([
-            "score" => "required|alpha_num",
-            "content" => "required|numeric|between:0,5",
-            "customer" => "required",
-            "seed" => "required"
-            ]);
-        echo $request;
+            "customer" => "required|numeric",
+            "seed" => "required|numeric",
+            "score" => "required|numeric|between:0,5",
+            "content" => "required|alpha_num"
+        ]);
+
+        Review::create($request->only(['customer','seed','score','content']));
 
     }
 

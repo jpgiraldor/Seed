@@ -8,7 +8,7 @@
                 @foreach($data["seeds"] as $seed)
                     <li>
                     {{ $seed->getId() }} - {{ $seed->getName() }} : {{ $seed->getPrice() }}
-                    <a href="{{ route('shop.add', ['id'=> $seed->getId()]) }}">Add to cart</a>
+                    <a href="{{ route('shop.add', ['id'=> $seed->getId()]) }}">{{__('cart.add')}}</a>
                     </li>
                 @endforeach
 

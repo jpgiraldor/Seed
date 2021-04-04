@@ -17,10 +17,8 @@ class ReviewController extends Controller
     }
 
     public function save(Request $request)
-    { 
-        dump($request);
-        //Review::validate($request);
-        Review::create($request->only(['customer','seed','score','content']));
+    {   
+        Review::validate($request);
         return back()->with('success','Elemento creado satifactoriamente!');
         //here goes the code to call the model and save it to the database
     }

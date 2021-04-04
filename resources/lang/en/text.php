@@ -28,11 +28,17 @@ return [
     'seed.list.show' => 'Show seed',
     'admin.seed.list.show' => 'Show',
     'admin.seed.show.delete' => 'click to delete this row base on id',
-    'customer.seed.show.cart' => 'Add to cart',
+    'cart.add' => 'Add to cart',
     'customer.seed.show.comment' => 'Add comment',
-    'customer.seed.show.comment.score' => 'Enter_the_score',
-    'customer.seed.show.comment.content' => 'Enter_the_content',
-    'shopping.buy.congratulations' => 'You are the best never change'
+    'customer.seed.show.comment.enter_score' => 'Enter_the_score',
+    'customer.seed.show.comment.enter_content' => 'Enter_the_content',
+    'customer.seed.show.comment.score'=> 'Score',
+    'customer.seed.show.comment.comment'=> 'Comment',
+    'shopping.buy.congratulations' => 'You are the best never change',
+    'shopping.cart.products_in_car' => 'Products in car',
+    'shopping.cart.total' => 'Total in cart',
+    'shopping.cart.buy' => 'Buy',
+    'shopping.cart.remove' => 'Remove all seeds from cart'
     
 
 

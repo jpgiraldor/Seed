@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Seed;
@@ -16,9 +16,8 @@ class SeedController extends Controller
     }
 
     public function save(Request $request)
-    { 
+    {   
         Seed::validate($request);
-        Seed::create($request->only(['name','brand','weight','water','ground','drought','germination','type','keywords','category','price']));
         return back()->with('success','Elemento creado satifactoriamente!');
         //here goes the code to call the model and save it to the database
     }

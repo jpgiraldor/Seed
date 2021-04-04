@@ -17,12 +17,12 @@
                     <b>{{__('text.seed.category')}}:</b> {{ $seed->getCategory() }}<br />
                     <b>{{__('text.seed.price')}}:</b> {{ $seed->getPrice() }}<br />
                     </ul>
-                    <a href="{{ route('shop.add', ['id'=> $seed->getId()]) }}">{{__('text.customer.seed.show.cart')}}</a>
+                    <a href="{{ route('shop.add', ['id'=> $seed->getId()]) }}">{{__('text.cart.add')}}</a>
                     <h6>{{__('text.customer.seed.show.comment')}}</h6>
                     <form method="POST" action="{{ route('customer.review.save') }}">
                         @csrf
-                        <input type="text" placeholder={{__('text.customer.seed.show.comment.score')}} name="score" value="{{ old('score') }}" />
-                        <input type="text" placeholder={{__('text.customer.seed.show.comment.score')}} name="content" value="{{ old('content') }}" />
+                        <input type="number" placeholder=0 min=0 max=5 step="1" name="score" value="{{ old('score') }}" />
+                        <input type="text" placeholder={{__('text.customer.seed.show.comment.enter_content')}} name="content" value="{{ old('content') }}" />
                         <input type="hidden" name="seed" value="{{ $seed->getId() }}" />
                         <input type="hidden" name="customer" value="{{ Auth::user()->id }}" />
                         <input type="submit" value="Send" />
@@ -34,8 +34,8 @@
             @foreach($data["reviews"] as $review)
                 <div class="card" >           
                     <div class="card-body">
-                        <b>Score: </b> {{ $review->getScore() }}<br />
-                        <b>Comments: </b> {{ $review->getContent() }}<br />
+                        <b>{{__('text.customer.seed.show.comment.score')}}: </b> {{ $review->getScore() }}<br />
+                        <b>{{__('text.customer.seed.show.comment.comment')}}: </b> {{ $review->getContent() }}<br />
                     </div>
                 </div>
                 <br/>

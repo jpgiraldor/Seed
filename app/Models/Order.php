@@ -46,6 +46,8 @@ class Order extends Model
         $this->attributes['id'] = $id;
     }
 
+#-----------------------------------------------------
+
     public function setCustomer($new_customer)
     {
         $this->attributes['customer'] = $new_customer;

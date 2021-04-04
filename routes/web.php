@@ -22,7 +22,7 @@ Route::get('/shop/add/{id}', 'App\Http\Controllers\ShoppingController@add')->nam
 Route::get('/shop/removeAll/', 'App\Http\Controllers\ShoppingController@removeAll')->name("shop.removeAll");
 Route::get('/shop/cart', "App\Http\Controllers\ShoppingController@cart")->name('shop.cart');
 Route::get('/shop/buy', "App\Http\Controllers\ShoppingController@buy")->name('shop.buy');
-
+Route::type('ruta/deseada', "ru")
 #---------------------------admin
 Route::get('/admin/seed/create', "App\Http\Controllers\Admin\SeedController@create")->name('admin.seed.create');
 Route::post('/admin/seed/save', "App\Http\Controllers\Admin\SeedController@save")->name('admin.seed.save');

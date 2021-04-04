@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model{
     use HasFactory;
     //attributes id, name, price, created_at, updated_at
-    protected $fillable = ['id','username', 'password','email','firstname','lastname','wallet'];
+    protected $fillable = ['id','username', 'password','email','firstname','lastname','wallet','addresses','reviews'];
     
     public function getId(){
         return $this->attributes['id'];
@@ -75,15 +75,15 @@ class Customer extends Model{
             Customer::create($request->only(["username","password","email","firstname","lastname","wallet"]));
     }
     
-    public function address(){
+    public function addresses(){
         return $this->hasMany(Address::class);
         } 
 
-    public function review(){
+    public function reviews(){
         return $this->hasMany(Review::class);
         } 
 
-    public function order(){
+    public function orders(){
         return $this->hasMany(Order::class);
         } 
 

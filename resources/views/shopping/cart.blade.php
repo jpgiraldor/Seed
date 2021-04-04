@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-        Products in Cart
+            {{__('text.shopping.cart.products_in_car')}}
             <ul id="errors">
             
                 @foreach($data["seeds"] as $seed)
@@ -14,10 +14,10 @@
                 @endforeach
             </ul>
             <br />
-            Total in cart: {{ $data['total'] }}<br /><br />
-            <a href="{{ route('shop.buy') }}">Buy</a>
+            {{__('text.shopping.cart.products_in_car')}}: {{ $data['total'] }}<br /><br />
+            <a href="{{ route('shop.buy') }}">{{__('text.shopping.cart.buy')}}</a>
             <br /><br />
-            <a href="{{ route('shop.removeAll') }}">Remove all seeds from cart</a>
+            <a href="{{ route('shop.removeAll') }}">{{__('text.shopping.cart.remove')}}</a>
         </div>
     </div>
 </div>
