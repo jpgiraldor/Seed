@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use App\Models\Item;
 
 class Review extends Model
 {
     use HasFactory;
     //attributes id, total, created_at, updated_at
-    protected $fillable = ['customer','seed','score','content','acc'];
+    protected $fillable = ['customer','seed','score','content'];
 
     public function getId()
     {
@@ -37,10 +38,6 @@ class Review extends Model
         return $this->attributes['content'];
     }
 
-    public function getAcc()
-    {
-        return $this->attributes['acc'];
-    }
 #----------------------------------------------------------------
     public function setId($id)
     {
@@ -67,11 +64,18 @@ class Review extends Model
         $this->attributes['content'] = $new_content;
     }
 
-    public function setAcc($new_acc)
-    {
-        $this->attributes['acc'] = $new_acc;
-    }
 
+    public static function validate(Request $request){
+        echo $request."hola";
+        $request->validate([
+            "score" => "required|alpha_num",
+            "content" => "required|numeric|between:0,5",
+            "customer" => "required",
+            "seed" => "required"
+            ]);
+        echo $request;
+
+    }
 
 
     

@@ -32,5 +32,24 @@ class ReviewController extends Controller
         //here goes the code to call the model and save it to the database
     }
 
+    public function show($id){
+        try{
+        $review = Review::findOrFail($id);
+        return view('admin.review.show')->with("review",$review);    
+        }catch(ModelNotFoundException  $e){
+            return redirect()->route('home.index');
+        }
+    }
+
+    public function list()
+    {
+        $data = []; //to be sent to the view
+        $data["reviews"] = Review::all();
+        return view('admin.review.list')->with("data",$data);
+    }
+
+
+
+
 
 }

@@ -12,15 +12,24 @@ class ReviewController extends Controller
         $data = []; //to be sent to the view
         $data["title"] = "Create review"; 
         $data["reviews"] = Review::all();
+        dd($data);
         return view('customer.review.create')->with("data",$data);
     }
 
     public function save(Request $request)
     { 
-        Review::validate($request);
-        Review::create($request->only(['customer','seed','score','content','acc']));
+        dump($request);
+        //Review::validate($request);
+        Review::create($request->only(['customer','seed','score','content']));
         return back()->with('success','Elemento creado satifactoriamente!');
         //here goes the code to call the model and save it to the database
+    }
+
+    public function list($id)
+    {
+        $data = []; //to be sent to the view
+        $data["reviews"] = Review::where('seed',$id);
+        #return view('customer.review.list')->with("data",$data);
     }
 
 

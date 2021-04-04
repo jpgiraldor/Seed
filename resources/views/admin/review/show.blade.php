@@ -14,7 +14,7 @@
                     <form method="post" action="{{ route('admin.review.delete' , $data->getId) }}">
                         {!! csrf_field() !!}
                         <input type="hidden" value="DELETE" />
-                        <button type="submit" class = >click to delete this row base on id</button>
+                        <button type="submit" class = >{{__('text.admin.review.show.delete')}}</button>
                 </div>
             </div>
         </div>

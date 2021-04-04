@@ -29,7 +29,8 @@ Route::post('/admin/seed/save', "App\Http\Controllers\Admin\SeedController@save"
 Route::get('/admin/seed/list',  'App\Http\Controllers\Admin\SeedController@list')->name("admin.seed.list");
 Route::get('/admin/seed/show/{id}', 'App\Http\Controllers\Admin\SeedController@show')->name("admin.seed.show");
 Route::post('/admin/seed/delete/{id}', 'App\Http\Controllers\Admin\SeedController@delete')->name("admin.seed.delete");
-
+Route::get('/admin/review/show/{id}', 'App\Http\Controllers\Admin\ReviewController@show')->name("admin.review.show");
+Route::get('/admin/review/list', 'App\Http\Controllers\Admin\ReviewController@list')->name("admin.review.list");
 #---------------------------customer
 Route::get('/customer/seed/list',  'App\Http\Controllers\Customer\SeedController@list')->name("customer.seed.list");
 Route::get('/customer/seed/show/{id}', 'App\Http\Controllers\Customer\SeedController@show')->name("customer.seed.show");

@@ -6,29 +6,40 @@
             <div class="card">
                 <div class="card-header">{{ $seed->getName() }}</div>
                 <div class="card-body">
-                    <b>Product id:</b> {{ $seed->getId() }}<br />
-                    <b>Product brand:</b> {{ $seed->getBrand() }}<br />
-                    <b>Product weight:</b> {{ $seed->getweight() }}<br />
-                    <b>Product water:</b> {{ $seed->getWater() }}<br />
-                    <b>Product ground:</b> {{ $seed->getGround() }}<br />
-                    <b>Product drought:</b> {{ $seed->getDrought() }}<br />
-                    <b>Product germination:</b> {{ $seed->getGermination() }}<br />
-                    <b>Product type:</b> {{ $seed->getType() }}<br />
-                    <b>Product keywords:</b> {{ $seed->getKeywords() }}<br />
-                    <b>Product category:</b> {{ $seed->getCategory() }}<br />
-                    <b>Product price:</b> {{ $seed->getPrice() }}<br />
+                    <b>{{__('text.seed.brand')}}:</b> {{ $seed->getBrand() }}<br />
+                    <b>{{__('text.seed.weight')}}:</b> {{ $seed->getweight() }}<br />
+                    <b>{{__('text.seed.water')}}:</b> {{ $seed->getWater() }}<br />
+                    <b>{{__('text.seed.ground')}}:</b> {{ $seed->getGround() }}<br />
+                    <b>{{__('text.seed.drought')}}:</b> {{ $seed->getDrought() }}<br />
+                    <b>{{__('text.seed.germination')}}:</b> {{ $seed->getGermination() }}<br />
+                    <b>{{__('text.seed.type')}}:</b> {{ $seed->getType() }}<br />
+                    <b>{{__('text.seed.keywords')}}:</b> {{ $seed->getKeywords() }}<br />
+                    <b>{{__('text.seed.category')}}:</b> {{ $seed->getCategory() }}<br />
+                    <b>{{__('text.seed.price')}}:</b> {{ $seed->getPrice() }}<br />
                     </ul>
-                    <a href="{{ route('shop.add', ['id'=> $seed->getId()]) }}">Add to cart</a>
+                    <a href="{{ route('shop.add', ['id'=> $seed->getId()]) }}">{{__('text.customer.seed.show.cart')}}</a>
+                    <h6>{{__('text.customer.seed.show.comment')}}</h6>
                     <form method="POST" action="{{ route('customer.review.save') }}">
                         @csrf
-                        <input type="text" placeholder="Enter the score" name="score" value="{{ old('score') }}" />
-                        <input type="text" placeholder="Enter the content" name="content" value="{{ old('content') }}" />
-                        <input name="seed" value="{{ $seed->getId() }}" />
-                        <input name="customer" value="{{ $seed->getId() }}" />
+                        <input type="text" placeholder={{__('text.customer.seed.show.comment.score')}} name="score" value="{{ old('score') }}" />
+                        <input type="text" placeholder={{__('text.customer.seed.show.comment.score')}} name="content" value="{{ old('content') }}" />
+                        <input type="hidden" name="seed" value="{{ $seed->getId() }}" />
+                        <input type="hidden" name="customer" value="{{ Auth::user()->id }}" />
                         <input type="submit" value="Send" />
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="col-md-8">
+            @foreach($data["reviews"] as $review)
+                <div class="card" >           
+                    <div class="card-body">
+                        <b>Score: </b> {{ $review->getScore() }}<br />
+                        <b>Comments: </b> {{ $review->getContent() }}<br />
+                    </div>
+                </div>
+                <br/>
+            @endforeach
         </div>
     </div>
 </div>
