@@ -5,6 +5,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class="topnav">
+                <a href="#home">Price</a>
+                <a href="">About </a>
+                <a href="">Contact </a>
+                <input type="text" placeholder="Search..">
+              </div>
             @foreach($data["seeds"] as $seed)
             <div class="card" >           
                 <a href="/seed/show/{{$seed->getId()}}" >
@@ -21,7 +27,9 @@
                     <b>{{__('text.seed.keywords')}}:</b> {{ $seed->getKeywords() }}<br />
                     <b>{{__('text.seed.category')}}:</b> {{ $seed->getCategory() }}<br />
                     <b>{{__('text.seed.price')}}:</b> {{ $seed->getPrice() }}<br />
-                    <a href="{{ route('customer.seed.show',$seed->getId()) }}" type = "button" class="btn btn-primary">{{__('text.seed.list.show')}}</a>
+
+
+                    <a href="{{ route('user.seed.show',$seed->getId()) }}" type = "button" class="btn btn-primary">{{__('text.seed.list.show')}}</a>
                 </div>
             </div>
 

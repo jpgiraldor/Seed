@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Seed;
+use phpDocumentor\Reflection\Types\Null_;
 
 class SeedController extends Controller
 {
@@ -26,13 +27,6 @@ class SeedController extends Controller
         $pr = Seed::whereId($id);
         $pr->delete();
         return redirect()->route('home.index');
-    }
-
-    public function list()
-    {
-        $data = []; //to be sent to the view
-        $data["seeds"] = Seed::all();
-        return view('admin.seed.list')->with("data",$data);
     }
 
     public function show($id){

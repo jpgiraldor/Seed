@@ -4,7 +4,7 @@
      use Illuminate\Database\Eloquent\Model;
      class Address extends Model{
           use HasFactory;
-          protected $fillable = ['region','city','street','phone','additional_info','cust'];
+          protected $fillable = ['region','city','street','phone','additional_info','user'];
           
           function getRegion() {
                return $this->atributes['region'];
@@ -26,8 +26,8 @@
                return $this->atributes['additional_info'];
           }
           
-          function getCust() {
-               return $this->atributes['cust'];
+          function getUser() {
+               return $this->atributes['user'];
           }
           
           function setRegion($new_region) {
@@ -50,10 +50,13 @@
                $this->attributes['additional_info'] = $new_additional_info;
           }
           
-          function setCust($new_cust) {
-               $this->attributes['cust'] = $new_cust;
+          function setUser($new_user) {
+               $this->attributes['user'] = $new_user;
           }
+
+          public function user(){
+               return $this->belongsTo(User::class);
+           }
 
      }          
 
-?>

@@ -253,4 +253,8 @@ class Seed extends Model{
             ]);
             Seed::create($request->only(['name','brand','weight','water','ground','drought','germination','type','keywords','category','price']));
     }
+
+    public static function by_price(){
+        return Seed::orderBy('price', 'DESC')->get();
+    }
 }

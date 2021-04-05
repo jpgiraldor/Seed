@@ -51,5 +51,13 @@ class Seed_order extends Model
         $this->attributes['amount'] = $new_amount;
     }
 
+    public function seed(){
+        return $this->belongsTo(Seed::class);
+    }
+
+    public function order(){
+        return $this->belongsTo(Order::class);
+    }
+
     
 }

@@ -10,16 +10,16 @@ class Order extends Model
 {
     use HasFactory;
     //attributes id, total, created_at, updated_at
-    protected $fillable = ['total','customer','date','ship_addr','acc','seed_order'];
+    protected $fillable = ['total','user','date','ship_addr','acc','seed_order'];
 
     public function getId()
     {
         return $this->attributes['id'];
     }
 
-    public function getCustomer()
+    public function getUser()
     {
-        return $this->attributes['customer'];
+        return $this->attributes['user'];
     }
 
     public function getDate()
@@ -48,9 +48,9 @@ class Order extends Model
 
 #-----------------------------------------------------
 
-    public function setCustomer($new_customer)
+    public function setUser($new_user)
     {
-        $this->attributes['customer'] = $new_customer;
+        $this->attributes['user'] = $new_user;
     }
 
     public function setTotal($new_total)
@@ -81,5 +81,9 @@ class Order extends Model
     public function seed_order(){
         return $this->hasMany(Seed_order::class);
     } 
+
+    public function user(){
+        return $this->belongsTo(user::class);
+    }
     
 }

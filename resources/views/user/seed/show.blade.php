@@ -19,12 +19,12 @@
                     </ul>
                     <a href="{{ route('shop.add', ['id'=> $seed->getId()]) }}">{{__('text.cart.add')}}</a>
                     <h6>{{__('text.customer.seed.show.comment')}}</h6>
-                    <form method="POST" action="{{ route('customer.review.save') }}">
+                    <form method="POST" action="{{ route('user.review.save') }}">
                         @csrf
                         <input type="number" placeholder=0 min=0 max=5 step="1" name="score" value="{{ old('score') }}" />
                         <input type="text" placeholder={{__('text.customer.seed.show.comment.enter_content')}} name="content" value="{{ old('content') }}" />
                         <input type="hidden" name="seed" value="{{ $seed->getId() }}" />
-                        <input type="hidden" name="customer" value="{{ Auth::user()->id }}" />
+                        <input type="hidden" name="user" value="{{ Auth::user()->id }}" />
                         <input type="submit" value="Send" />
                     </form>
                 </div>

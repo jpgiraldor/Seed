@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class ReviewController extends Controller
         $data["title"] = "Create review"; 
         $data["reviews"] = Review::all();
         dd($data);
-        return view('customer.review.create')->with("data",$data);
+        return view('user.review.create')->with("data",$data);
     }
 
     public function save(Request $request)
@@ -27,7 +27,7 @@ class ReviewController extends Controller
     {
         $data = []; //to be sent to the view
         $data["reviews"] = Review::where('seed',$id);
-        #return view('customer.review.list')->with("data",$data);
+        return view('user.review.list')->with("data",$data);
     }
 
 

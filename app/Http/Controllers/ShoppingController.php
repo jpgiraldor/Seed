@@ -6,16 +6,19 @@ use App\Models\Seed;
 use App\Models\Order;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShoppingController extends Controller
 {
-    public function index()
-    {
-        $data = []; //to be sent to the view
-        $data["title"] = "Store seeds";
-        $data["seeds"] = Seed::all();
+    public function list(Request $request = null) {   
+        if ($request == null){
+            $data = []; //to be sent to the view
+            $data["seeds"] = Seed::all();
+        }else if ($request == 'price'){
 
-        return view('customer.seed.list')->with("data",$data);
+        }
+
+        return view('shop.list')->with("data",$data);
     }
 
     public function cart(Request $request){
@@ -34,7 +37,7 @@ class ShoppingController extends Controller
         $data["total"] = $total;
         $data["seeds"] = $listSeedsInCart;
 
-        return view('shopping.cart')->with("data",$data);
+        return view('shop.cart')->with("data",$data);
     }
 
     public function add($id, Request $request)
@@ -77,6 +80,6 @@ class ShoppingController extends Controller
         $order->setTotal($total);
         $order->save();
 
-        return view('shopping.buy')->with("data",$data);
+        return view('shop.buy')->with("data",$data);
     }
 }

@@ -11,16 +11,16 @@ class Review extends Model
 {
     use HasFactory;
     //attributes id, total, created_at, updated_at
-    protected $fillable = ['customer','seed','score','content'];
+    protected $fillable = ['user','seed','score','content'];
 
     public function getId()
     {
         return $this->attributes['id'];
     }
 
-    public function getCustomer()
+    public function getUser()
     {
-        return $this->attributes['customer'];
+        return $this->attributes['user'];
     }
 
     public function getSeed()
@@ -44,9 +44,9 @@ class Review extends Model
         $this->attributes['id'] = $id;
     }
 
-    public function setCustomer($new_customer)
+    public function setUser($new_user)
     {
-        $this->attributes['customer'] = $new_customer;
+        $this->attributes['user'] = $new_user;
     }
 
     public function setSeed($new_seed)
@@ -64,17 +64,21 @@ class Review extends Model
         $this->attributes['content'] = $new_content;
     }
 
+    public function user(){
+        return $this->belongsTo(user::class);
+    }
+
 
     public static function validate(Request $request){
 
         $request->validate([
-            "customer" => "required|numeric",
+            "user" => "required|numeric",
             "seed" => "required|numeric",
             "score" => "required|numeric|between:0,5",
             "content" => "required|alpha_num"
         ]);
 
-        Review::create($request->only(['customer','seed','score','content']));
+        Review::create($request->only(['user','seed','score','content']));
 
     }
 

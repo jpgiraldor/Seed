@@ -17,22 +17,19 @@ Auth::routes();
 
 Route::get('/', "App\Http\Controllers\HomeController@index")->name("home.index");
 Route::get('/home', "App\Http\Controllers\HomeController@index")->name('home');
-Route::get('/shop/index', "App\Http\Controllers\ShoppingController@index")->name('shop.index');
+Route::get('/shop/list', "App\Http\Controllers\ShoppingController@list")->name('shop.list');
 Route::get('/shop/add/{id}', 'App\Http\Controllers\ShoppingController@add')->name("shop.add");
 Route::get('/shop/removeAll/', 'App\Http\Controllers\ShoppingController@removeAll')->name("shop.removeAll");
 Route::get('/shop/cart', "App\Http\Controllers\ShoppingController@cart")->name('shop.cart');
 Route::get('/shop/buy', "App\Http\Controllers\ShoppingController@buy")->name('shop.buy');
-#Route::type('ruta/deseada', "App\Http\Controllers\nombre")->name('nombrearchivo.nombrecontrollador');
 #---------------------------admin
 Route::get('/admin/seed/create', "App\Http\Controllers\Admin\SeedController@create")->name('admin.seed.create');
 Route::post('/admin/seed/save', "App\Http\Controllers\Admin\SeedController@save")->name('admin.seed.save');
-Route::get('/admin/seed/list',  'App\Http\Controllers\Admin\SeedController@list')->name("admin.seed.list");
 Route::get('/admin/seed/show/{id}', 'App\Http\Controllers\Admin\SeedController@show')->name("admin.seed.show");
 Route::post('/admin/seed/delete/{id}', 'App\Http\Controllers\Admin\SeedController@delete')->name("admin.seed.delete");
 Route::get('/admin/review/show/{id}', 'App\Http\Controllers\Admin\ReviewController@show')->name("admin.review.show");
 Route::get('/admin/review/list', 'App\Http\Controllers\Admin\ReviewController@list')->name("admin.review.list");
 #---------------------------customer
-Route::get('/customer/seed/list',  'App\Http\Controllers\Customer\SeedController@list')->name("customer.seed.list");
-Route::get('/customer/seed/show/{id}', 'App\Http\Controllers\Customer\SeedController@show')->name("customer.seed.show");
-Route::get('/customer/review/create', "App\Http\Controllers\Customer\ReviewController@create")->name('customer.review.create');
-Route::post('/customer/review/save', "App\Http\Controllers\Customer\ReviewController@save")->name('customer.review.save');
+Route::get('/user/seed/show/{id}', 'App\Http\Controllers\User\SeedController@show')->name("user.seed.show");
+Route::get('/user/review/create', "App\Http\Controllers\User\ReviewController@create")->name('user.review.create');
+Route::post('/user/review/save', "App\Http\Controllers\User\ReviewController@save")->name('user.review.save');
