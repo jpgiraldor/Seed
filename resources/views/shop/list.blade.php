@@ -6,9 +6,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="topnav">
-                <a href="#home">Price</a>
-                <a href="">About </a>
-                <a href="">Contact </a>
+                <a href="/shop/list/price">{{__('text.seed.price')}}</a>
+                <a href="/shop/list/water">{{__('text.seed.water')}} </a>
+                <a href="/shop/list/germination">{{__('text.seed.germination')}} </a>
+                <a href="/shop/list/score"> Score </a>
                 <input type="text" placeholder="Search..">
               </div>
             @foreach($data["seeds"] as $seed)

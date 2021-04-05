@@ -9,7 +9,7 @@
             
                 @foreach($data["seeds"] as $seed)
                     <li>
-                    {{ $seed->getId() }} - {{ $seed->getName() }} : {{ $seed->getPrice() }}
+                    {{ $seed[0] }} - {{ $seed[1] }} : {{ $seed[2] }}
                     </li>
                 @endforeach
             </ul>

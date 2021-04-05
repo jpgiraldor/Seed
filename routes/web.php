@@ -17,7 +17,7 @@ Auth::routes();
 
 Route::get('/', "App\Http\Controllers\HomeController@index")->name("home.index");
 Route::get('/home', "App\Http\Controllers\HomeController@index")->name('home');
-Route::get('/shop/list', "App\Http\Controllers\ShoppingController@list")->name('shop.list');
+Route::get('/shop/list/{order?}', "App\Http\Controllers\ShoppingController@list")->name('shop.list');
 Route::get('/shop/add/{id}', 'App\Http\Controllers\ShoppingController@add')->name("shop.add");
 Route::get('/shop/removeAll/', 'App\Http\Controllers\ShoppingController@removeAll')->name("shop.removeAll");
 Route::get('/shop/cart', "App\Http\Controllers\ShoppingController@cart")->name('shop.cart');

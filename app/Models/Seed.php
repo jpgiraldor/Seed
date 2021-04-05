@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -256,5 +256,24 @@ class Seed extends Model{
 
     public static function by_price(){
         return Seed::orderBy('price', 'DESC')->get();
+    }
+
+    public static function by_water(){
+        return Seed::orderBy('water', 'DESC')->get();
+    }
+
+    public static function by_germination(){
+        return Seed::orderBy('germination', 'DESC')->get();
+    }
+
+    public static function search($name){
+        return Seed::where('name', 'LIKE', $name)->get();
+    }
+
+    public static function by_score(){
+        $reviews = Review::withCount(['ratings as average_rating' => function($query) {
+            $query->select(DB::raw('coalesce(avg(score),0)'));
+        }])->orderByDesc('score')->get();
+        
     }
 }
