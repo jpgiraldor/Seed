@@ -12,7 +12,6 @@ class ReviewController extends Controller
         $data = []; //to be sent to the view
         $data["title"] = "Create review"; 
         $data["reviews"] = Review::all();
-        dd($data);
         return view('user.review.create')->with("data",$data);
     }
 

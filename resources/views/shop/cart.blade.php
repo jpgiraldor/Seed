@@ -9,7 +9,7 @@
             
                 @foreach($data["seeds"] as $seed)
                     <li>
-                    {{ $seed[0] }} - {{ $seed[1] }} : {{ $seed[2] }}
+                    {{ $seed[0] }} : {{ $seed[1] }}
                     </li>
                 @endforeach
             </ul>

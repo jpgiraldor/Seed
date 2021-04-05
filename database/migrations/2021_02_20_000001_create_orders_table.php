@@ -21,10 +21,6 @@ class CreateOrdersTable extends Migration
             $table->date('date');
             $table->bigInteger('ship_addr')->unsigned();
             $table->foreign('ship_addr')->references('id')->on('addresses');
-            $table->bigInteger('seed')->unsigned();
-            $table->foreign('seed')->references('id')->on('seeds');
-            
-            $table->string('acc');
             $table->timestamps();
         });
     }

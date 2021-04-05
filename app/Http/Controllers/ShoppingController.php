@@ -4,12 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Seed;
 use App\Models\Order;
-use App\Models\Item;
+use App\Models\Seed_order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ShoppingController extends Controller
 {
+
+    public function search(Request $request){
+        $search = $request['query'];
+        $hola = "asas";
+        dd($search);
+        return redirect()->action(
+            [ShoppingController::class, 'list', ['order' => $search]]
+        );
+    }
+
     public function list($order = null) {   
         $data = [];
         if ($order == null){
@@ -20,6 +30,8 @@ class ShoppingController extends Controller
             $data["seeds"] = Seed::by_water();
         }else if ($order == 'germination'){
             $data['seeds'] = Seed::by_germination();
+        }else if ($order == 'score'){
+            $data['seeds'] = Seed::by_score();
         }else{
             $data['seeds'] = Seed::search($order);
         }
@@ -31,31 +43,24 @@ class ShoppingController extends Controller
         $data = []; //to be sent to the view
         $data["title"] = "Store seeds";
 
-        $total = 0;
-        $items = $request->session()->get("seeds");
-        
-        if($items == null){
-            $items = [];
-        }
-
-        foreach ($items as $sp) {
-            $total += $sp[2];           
-        }
-
-        $data["total"] = $total;
-        $data["seeds"] = $items;
+        $data["total"] = $request->session()->get("total", 0);
+        $data["seeds"] = $request->session()->get("seeds", []);
 
         return view('shop.cart')->with("data",$data);
     }
 
-    public function add($seed, Request $request) {   
-
-        /*
+    public function add($id, Request $request) {   
         $seedID = (int) $id;
-        $seedName = $seed->getName();
-        $seedPrice = (int) $seed->getPrice(); */
-        $request->session()->push('seeds', [$seed, 0, 0]); 
-        
+        $seed = Seed::firstWhere('id', $seedID);
+
+        if ($seed != null) {
+            $request->session()->push('seeds', 
+                [$seed->getName(), $seed->getPrice()]);
+
+            $total = $request->session()->get('total', 0);
+            $total += $seed->getPrice();
+            $request->session()->put('total', 0);
+        }
 
         return back();
     }
@@ -70,7 +75,28 @@ class ShoppingController extends Controller
         $data = []; //to be sent to the view
         $data['title'] = "Buy";
 
+        $seeds = $request->session()->get('seeds');
+        $total = $request->session()->get('total', 0);
 
+        if ($seeds != null) {
+            $currUser = Auth::user();
+            $order = Order::create([
+                'total' => $total,
+                'user' => Auth::id(),
+                'date' => date("Y-m-d H:i:s"),
+                'ship_addr' => '',            
+            ]);
+        
+            
+            foreach($seeds as $s) {
+                Seed_order::create([
+                    'seed' => $s[0],
+                    'order' => $order->getId(),
+                    'amount' => $s[1],
+                ]);  
+            }
+        }
+        
 
 
         return view('shop.buy')->with("data",$data);

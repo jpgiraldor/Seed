@@ -10,7 +10,7 @@ class Order extends Model
 {
     use HasFactory;
     //attributes id, total, created_at, updated_at
-    protected $fillable = ['total','user','date','ship_addr','acc','seed_order'];
+    protected $fillable = ['total','user','date','ship_addr','seed_order'];
 
     public function getId()
     {
@@ -30,11 +30,6 @@ class Order extends Model
     public function getShip_addr()
     {
         return $this->attributes['ship_addr'];
-    }
-
-    public function getAcc()
-    {
-        return $this->attributes['acc'];
     }
 
     public function getSeed_order()
@@ -66,11 +61,6 @@ class Order extends Model
     public function setShip_addr($new_ship_addr)
     {
         $this->attributes['ship_addr'] = $new_ship_addr;
-    }
-
-    public function setAcc($new_acc)
-    {
-        $this->attributes['acc'] = $new_acc;
     }
 
     public function setSeed_order($new_seed_order)

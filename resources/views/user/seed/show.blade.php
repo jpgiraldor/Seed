@@ -17,7 +17,7 @@
                     <b>{{__('text.seed.category')}}:</b> {{ $seed->getCategory() }}<br />
                     <b>{{__('text.seed.price')}}:</b> {{ $seed->getPrice() }}<br />
                     </ul>
-                    <a href="{{ route('shop.add', $seed->getId(), [$seed]) }}">{{__('text.cart.add')}}</a>
+                    <a href="{{ route('shop.add', ['id' => $seed->getId()]) }}">{{__('text.cart.add')}}</a>
                     <h6>{{__('text.customer.seed.show.comment')}}</h6>  
                     <form method="POST" action="{{ route('user.review.save') }}">
                         @csrf

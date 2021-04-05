@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Review;
 
 class Seed extends Model{
     use HasFactory;
@@ -271,9 +272,9 @@ class Seed extends Model{
     }
 
     public static function by_score(){
-        $reviews = Review::withCount(['ratings as average_rating' => function($query) {
-            $query->select(DB::raw('coalesce(avg(score),0)'));
-        }])->orderByDesc('score')->get();
-        
+        $data["review"] = Review::all();
+        foreach ($data["review"] as $value) {
+            echo $value->getScore();
+        }
     }
 }

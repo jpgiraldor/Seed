@@ -10,7 +10,11 @@
                 <a href="/shop/list/water">{{__('text.seed.water')}} </a>
                 <a href="/shop/list/germination">{{__('text.seed.germination')}} </a>
                 <a href="/shop/list/score"> Score </a>
-                <input type="text" placeholder="Search..">
+                <form type='POST' action="{{ route('shop.search') }}" role="search">
+                <!--@csrf -->
+                    <input class='form-control mr-sm-2' name='query' type='text' >
+                    <button class="btn search-icon" type="submit">Buscar<button>
+                </form>
               </div>
             @foreach($data["seeds"] as $seed)
             <div class="card" >           

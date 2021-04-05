@@ -24,5 +24,12 @@ class SeedController extends Controller
             return redirect()->route('home.index');
         }
     }
+
+    public static function by_score(){
+        $data["review"] = Review::all()->get();
+        foreach ($data as $value) {
+            echo $value->getScore();
+        }
+    }
 }
             
