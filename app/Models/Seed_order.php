@@ -59,5 +59,19 @@ class Seed_order extends Model
         return $this->belongsTo(Order::class);
     }
 
+    public static function validate($params) {
+        $seed = $params['seed'];
+        $order = $params['order'];
+        $amount = $params['amount'];
+
+        return Seed_order::create([
+            'seed' => $seed,
+            'order' => $order,
+            'amount' => $amount,
+        ]);  
+        
+
+    }
+
     
 }

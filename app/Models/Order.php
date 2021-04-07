@@ -75,5 +75,18 @@ class Order extends Model
     public function user(){
         return $this->belongsTo(user::class);
     }
+
+    public static function validate($params) {
+        $total = $params['total'];
+        $user = $params['user'];
+        $ship_addr = $params['ship_addr'];
+
+        return Order::create([
+            'total' => $total,
+            'user' => $user,
+            'date' => date("Y-m-d H:i:s"),
+            'ship_addr' => $ship_addr,  
+        ]);
+    } 
     
 }

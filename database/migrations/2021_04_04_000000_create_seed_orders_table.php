@@ -15,6 +15,7 @@ class CreateSeedOrdersTable extends Migration{
             $table->foreign('seed')->references('id')->on('seeds');
             $table->bigInteger('order')->unsigned();
             $table->foreign('order')->references('id')->on('orders');
+            $table->double('amount');
             $table->timestamps();
         });
     }

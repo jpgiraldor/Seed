@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
-
+    //'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => 'mailgun',
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations
@@ -32,6 +32,13 @@ return [
     |            "postmark", "log", "array"
     |
     */
+
+    //'from' => ['address' => 'example@example.com', 'name' => 'App Name'],
+
+    'mailgun' => [
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
+    ],
 
     'mailers' => [
         'smtp' => [

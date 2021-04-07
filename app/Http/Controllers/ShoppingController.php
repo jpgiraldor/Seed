@@ -5,22 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Seed;
 use App\Models\Order;
 use App\Models\Seed_order;
+use App\Models\Address;
+use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Models\Review;
 
 class ShoppingController extends Controller
-{
+{   
 
-    public function search(Request $request){
-        $search = $request['query'];
-        $hola = "asas";
-        dd($search);
-        return redirect()->action(
-            [ShoppingController::class, 'list', ['order' => $search]]
-        );
-    }
-
-    public function list($order = null) {   
+    public function list( Request $request, $order = null) {   
         $data = [];
         if ($order == null){
             $data["seeds"] = Seed::all();
@@ -32,73 +27,36 @@ class ShoppingController extends Controller
             $data['seeds'] = Seed::by_germination();
         }else if ($order == 'score'){
             $data['seeds'] = Seed::by_score();
-        }else{
-            $data['seeds'] = Seed::search($order);
+        }else if ($order == 'popularity'){
+            $data['seeds'] = Seed::by_pop();
+        }
+
+        if (is_null($request['query']) !=1){
+            $data['seeds'] = Seed::search($request['query']);
         }
 
         return view('shop.list')->with("data",$data);
     }
 
-    public function cart(Request $request){
-        $data = []; //to be sent to the view
-        $data["title"] = "Store seeds";
+    public function pop() {   
 
-        $data["total"] = $request->session()->get("total", 0);
-        $data["seeds"] = $request->session()->get("seeds", []);
+            $data['seeds'] = Seed::by_pop();
 
-        return view('shop.cart')->with("data",$data);
+        return view('home.index')->with("data",$data);
     }
 
-    public function add($id, Request $request) {   
-        $seedID = (int) $id;
-        $seed = Seed::firstWhere('id', $seedID);
 
-        if ($seed != null) {
-            $request->session()->push('seeds', 
-                [$seed->getName(), $seed->getPrice()]);
+    
+    public function show($id){
+        try{
+            $data = []; 
+            $data["reviews"] = Review::where('seed',$id)->get();
+            $data["seed"] = Seed::findOrFail($id);
 
-            $total = $request->session()->get('total', 0);
-            $total += $seed->getPrice();
-            $request->session()->put('total', 0);
+            return view('shop.show')->with("data",$data);    
+        }catch(ModelNotFoundException  $e){
+            return redirect()->route('home.index');
         }
-
-        return back();
     }
 
-    public function removeAll(Request $request) {
-        $request->session()->forget('seeds');
-        return back();
-    }
-
-    public function buy(Request $request)
-    {
-        $data = []; //to be sent to the view
-        $data['title'] = "Buy";
-
-        $seeds = $request->session()->get('seeds');
-        $total = $request->session()->get('total', 0);
-
-        if ($seeds != null) {
-            $currUser = Auth::user();
-            $order = Order::create([
-                'total' => $total,
-                'user' => Auth::id(),
-                'date' => date("Y-m-d H:i:s"),
-                'ship_addr' => '',            
-            ]);
-        
-            
-            foreach($seeds as $s) {
-                Seed_order::create([
-                    'seed' => $s[0],
-                    'order' => $order->getId(),
-                    'amount' => $s[1],
-                ]);  
-            }
-        }
-        
-
-
-        return view('shop.buy')->with("data",$data);
-    }
 }

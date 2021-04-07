@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Seed;
 use phpDocumentor\Reflection\Types\Null_;
+use App\Models\Review;
+use App\Models\Seed_order;
 
-class SeedController extends Controller
-{
+class SeedController extends Controller {
+
     public function create(){
         $data = []; //to be sent to the view
         $data["title"] = "Create seed"; 
@@ -24,17 +26,16 @@ class SeedController extends Controller
     }
 
     public function delete($id){
+        $sords = Seed_order::where('seed', $id);
+        $sords->delete();
+
+        $revs = Review::where('seed', $id);
+        $revs->delete();
+
         $pr = Seed::whereId($id);
         $pr->delete();
+
         return redirect()->route('home.index');
     }
 
-    public function show($id){
-        try{
-        $seed = Seed::findOrFail($id);
-        return view('admin.seed.show')->with("seed",$seed);    
-        }catch(ModelNotFoundException  $e){
-            return redirect()->route('home.index');
-        }
-    }
 }

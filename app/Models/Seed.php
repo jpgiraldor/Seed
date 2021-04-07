@@ -271,10 +271,55 @@ class Seed extends Model{
         return Seed::where('name', 'LIKE', $name)->get();
     }
 
-    public static function by_score(){
-        $data["review"] = Review::all();
-        foreach ($data["review"] as $value) {
-            echo $value->getScore();
+    public static function by_pop(){
+        $popCount = [];
+
+        $orders = Seed_order::all();
+        foreach($orders as $ord) {
+            $seed = $ord->getSeed();
+            if(isset($popCount[$seed]) == null) {
+                $popCount[$seed] = 0;
+            }
+            $popCount[$seed] += 1;
         }
+
+    
+        $cmp = function($entry, $key) use ($popCount){
+            $seedID = $entry->getId();
+            return $popCount[$seedID];
+        };
+
+        $seeds = array_keys($popCount);
+        return Seed::whereIn('id', $seeds)->get()->sortByDesc($cmp);
+    }
+
+    public static function by_score(){
+        $acumPop = [];
+        $popCount = [];
+
+        $reviews = Review::all();
+        
+        foreach($reviews as $rev) {
+            $score = $rev->getScore();
+            $seed = $rev->getSeed();
+            
+            if(isset($acumPop[$seed]) == null) {
+                $acumPop[$seed] = 0;
+                $popCount[$seed] = 0;
+            }
+
+            $acumPop[$seed] += $score;
+            $popCount[$seed] += 1;
+        }
+
+    
+        $cmp = function($entry, $key) use ($acumPop, $popCount){
+            $seedID = $entry->getId();
+            return $acumPop[$seedID]/$popCount[$seedID];
+        };
+
+        $seeds = array_keys($acumPop);
+        return Seed::whereIn('id', $seeds)->get()->sortByDesc($cmp);
+    
     }
 }
