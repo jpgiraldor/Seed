@@ -15,7 +15,7 @@
                             
                         @foreach($data["addresses"] as $addr)
                         <div class="form-group row col-md-6"> 
-                            <label class="text-md-right col-form-label"> REGION: {{ $addr->getRegion() }} CITY: {{ $addr->getCity() }} STREET: {{ $addr->getStreet() }}  </label>
+                            <label class="text-md-right col-form-label"> {{__('text.user.address.region')}}: {{ $addr->getRegion() }} {{__('text.user.address.city')}}: {{ $addr->getCity() }} {{__('text.user.address.street')}}: {{ $addr->getStreet() }}  </label>
                         </div>
                         @endforeach
                         

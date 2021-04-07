@@ -6,7 +6,7 @@
         <div class="col-md-8">
             @include('utils.message')
             <div class="card">
-                <div class="card-header">{{__('text.admin.seed.create.create')}}</div>
+                <div class="card-header">{{__('text.home.index.hot')}}</div>
                 <div class="card-body">
                     @if($errors->any())
                     <ul id="errors">

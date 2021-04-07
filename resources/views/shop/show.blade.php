@@ -38,9 +38,9 @@
                             </form>
                         @endif
                     @else
-                            Login or register to add comments
-                            <a href="{{ route('login') }}">Login</a>
-                            <a href="{{ route('register') }}">Register</a>
+                            {{__('text.shop.show.login')}}
+                            <a href="{{ route('login') }}">{{__('text.shop.show.log')}}</a>
+                            <a href="{{ route('register') }}">{{__('text.shop.show.register')}}</a>
                     @endauth
                 </div>
             </div>

@@ -14,7 +14,7 @@
 
         <header class="masthead bg-primary text-white text-center">
                 <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Hot seeds right now</p>
+                <p class="masthead-subheading font-weight-light mb-0">{{__('text.admin.seed.create.create')}}</p>
             </div>
         </header>
 @foreach($data["seeds"] as $seed)

@@ -12,12 +12,12 @@
                 <a  class="nav-link" href="/shop/list/price">{{__('text.seed.price')}}</a>
                 <a  class="nav-link" href="/shop/list/water">{{__('text.seed.water')}} </a>
                 <a  class="nav-link" href="/shop/list/germination">{{__('text.seed.germination')}} </a>
-                <a  class="nav-link" href="/shop/list/score"> Score </a>
-                <a  class="nav-link" href="/shop/list/popularity"> Popularity </a>
+                <a  class="nav-link" href="/shop/list/score">{{__('text.customer.seed.show.comment.score')}} </a>
+                <a  class="nav-link" href="/shop/list/popularity"> {{__('text.shop.list.popularity')}} </a>
                 <form type='POST' class="form-inline my-2 my-lg-0">
                 <!--@csrf -->
-                    <input class="form-control mr-sm-2" name='query' type='search' >
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    <input class="form-control ml-sm-2" name='query' type='search' >
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> {{__('text.shop.list.search')}}</button>
                 </form>
             </nav>
             @foreach($data["seeds"] as $seed)

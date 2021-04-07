@@ -18,7 +18,7 @@
                                     </li>
                                 @endforeach
                             </ul>
-                            Select a shipping address: 
+                            {{__('text.user.seed.cart')}}: 
                             <form action="{{ route('user.seed.buy') }}">
                                 <div class="dropdown">
                                     <select class="btn btn-primary dropdown-toggle"name="ship_addr" type="button" id="ship_addr" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

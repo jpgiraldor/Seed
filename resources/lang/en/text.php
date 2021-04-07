@@ -38,7 +38,17 @@ return [
     'shopping.cart.products_in_car' => 'Products in car',
     'shopping.cart.total' => 'Total in cart',
     'shopping.cart.buy' => 'Buy',
-    'shopping.cart.remove' => 'Remove all seeds from cart'
+    'shopping.cart.remove' => 'Remove all seeds from cart',
+    'home.index.hot' => 'Hot seeds now',
+    'shop.list.popularity' => 'Popularity',
+    'shop.list.search' => 'search',
+    'shop.show.login' => 'Login or register to add comments',
+    'shop.show.log' => 'Login',
+    'shop.show.register' => 'Register',
+    'user.address.region' => 'Region',
+    'user.address.street' => 'Street',
+    'user.address.city' => 'City',
+    'user.seed.cart' => 'Select a shipping address'
     
 
 
