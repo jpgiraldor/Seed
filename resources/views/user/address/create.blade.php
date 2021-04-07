@@ -2,22 +2,33 @@
 
 @section('content')
 <div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Add Address') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('user.address.save') }}">
                         @csrf
+                        
+                            
+                        @foreach($data["addresses"] as $addr)
+                        <div class="form-group row col-md-6"> 
+                            <label class="text-md-right col-form-label"> {{__('text.user.address.region')}}: {{ $addr->getRegion() }} {{__('text.user.address.city')}}: {{ $addr->getCity() }} {{__('text.user.address.street')}}: {{ $addr->getStreet() }}  </label>
+                        </div>
+                        @endforeach
+                        
 
+
+                        <input type="hidden" name="user" value="{{ Auth::id() }}" />
                         <div class="form-group row">
-                            <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Firstname') }}</label>
+                            <label for="region" class="col-md-4 col-form-label text-md-right">{{ __('Region') }}</label>
 
                             <div class="col-md-6">
-                                <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
+                                <input id="region" type="text" class="form-control @error('region') is-invalid @enderror" name="region" value="{{ old('region') }}" required autocomplete="region" autofocus>
 
-                                @error('Firstname')
+                                @error('region')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -26,12 +37,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus>
 
-                                @error('lastname')
+                                @error('city')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -40,12 +51,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Street') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="street" type="text" class="form-control @error('street') is-invalid @enderror" name="street" value="{{ old('street') }}" required autocomplete="street">
 
-                                @error('email')
+                                @error('street')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -54,12 +65,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" required autocomplete="phone">
 
-                                @error('password')
+                                @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -68,10 +79,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="additional_info" class="col-md-4 col-form-label text-md-right">{{ __('Additional Info') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="additional_info" type="text" class="form-control" name="additional_info" autocomplete="additional_info">
                             </div>
                         </div>
 

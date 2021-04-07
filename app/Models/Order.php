@@ -8,32 +8,85 @@ use App\Models\Item;
 
 class Order extends Model
 {
-
+    use HasFactory;
     //attributes id, total, created_at, updated_at
-    protected $fillable = ['total','cust','id','date','ship_addr','acc','seed_order'];
+    protected $fillable = ['total','user','date','ship_addr','seed_order'];
 
     public function getId()
     {
         return $this->attributes['id'];
     }
 
+    public function getUser()
+    {
+        return $this->attributes['user'];
+    }
+
+    public function getDate()
+    {
+        return $this->attributes['date'];
+    }
+
+    public function getShip_addr()
+    {
+        return $this->attributes['ship_addr'];
+    }
+
+    public function getSeed_order()
+    {
+        return $this->attributes['seed_order'];
+    }
     public function setId($id)
     {
         $this->attributes['id'] = $id;
     }
 
-    public function getTotal()
+#-----------------------------------------------------
+
+    public function setUser($new_user)
     {
-        return $this->attributes['total'];
+        $this->attributes['user'] = $new_user;
     }
 
-    public function setTotal($total)
+    public function setTotal($new_total)
     {
-        $this->attributes['total'] = $total;
+        $this->attributes['total'] = $new_total;
     }
 
-    public function items(){
-        return $this->hasMany(Item::class);
+    public function setDate($new_date)
+    {
+        $this->attributes['date'] = $new_date;
     }
+
+    public function setShip_addr($new_ship_addr)
+    {
+        $this->attributes['ship_addr'] = $new_ship_addr;
+    }
+
+    public function setSeed_order($new_seed_order)
+    {
+        $this->attributes['seed_order'] = $new_seed_order;
+    }
+
+    public function seed_order(){
+        return $this->hasMany(Seed_order::class);
+    } 
+
+    public function user(){
+        return $this->belongsTo(user::class);
+    }
+
+    public static function validate($params) {
+        $total = $params['total'];
+        $user = $params['user'];
+        $ship_addr = $params['ship_addr'];
+
+        return Order::create([
+            'total' => $total,
+            'user' => $user,
+            'date' => date("Y-m-d H:i:s"),
+            'ship_addr' => $ship_addr,  
+        ]);
+    } 
     
 }
