@@ -9,17 +9,18 @@ use App\Models\Item;
 class Order extends Model
 {
     use HasFactory;
-    //attributes id, total, created_at, updated_at
-    protected $fillable = ['total','user','date','ship_addr','seed_order'];
+    //attributes id, total, date, ship_addr,, user, seed_orders created_at, updated_at
+    protected $fillable = [
+        'total',
+        'user',
+        'date',
+        'ship_addr',
+        'seed_orders'
+    ];
 
     public function getId()
     {
         return $this->attributes['id'];
-    }
-
-    public function getUser()
-    {
-        return $this->attributes['user'];
     }
 
     public function getDate()
@@ -27,15 +28,12 @@ class Order extends Model
         return $this->attributes['date'];
     }
 
-    public function getShip_addr()
+    public function getShipAddr()
     {
         return $this->attributes['ship_addr'];
     }
 
-    public function getSeed_order()
-    {
-        return $this->attributes['seed_order'];
-    }
+
     public function setId($id)
     {
         $this->attributes['id'] = $id;
@@ -43,10 +41,7 @@ class Order extends Model
 
 #-----------------------------------------------------
 
-    public function setUser($new_user)
-    {
-        $this->attributes['user'] = $new_user;
-    }
+
 
     public function setTotal($new_total)
     {
@@ -58,25 +53,23 @@ class Order extends Model
         $this->attributes['date'] = $new_date;
     }
 
-    public function setShip_addr($new_ship_addr)
+    public function setShipAddr($new_ship_addr)
     {
         $this->attributes['ship_addr'] = $new_ship_addr;
     }
 
-    public function setSeed_order($new_seed_order)
+    public function seedOrders()
     {
-        $this->attributes['seed_order'] = $new_seed_order;
+        return $this->hasMany(SeedOrders::class);
     }
 
-    public function seed_order(){
-        return $this->hasMany(Seed_order::class);
-    } 
-
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(user::class);
     }
 
-    public static function validate($params) {
+    public static function validate($params)
+    {
         $total = $params['total'];
         $user = $params['user'];
         $ship_addr = $params['ship_addr'];
@@ -85,8 +78,7 @@ class Order extends Model
             'total' => $total,
             'user' => $user,
             'date' => date("Y-m-d H:i:s"),
-            'ship_addr' => $ship_addr,  
+            'ship_addr' => $ship_addr,
         ]);
-    } 
-    
+    }
 }
