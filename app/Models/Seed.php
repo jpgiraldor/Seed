@@ -238,7 +238,8 @@ class Seed extends Model{
         return $this->hasMany(Review::class);
         } 
 
-    public static function validate($request){
+    public static function validate($request)
+    {
         $request->validate([
             "name" => "required|alpha_num",
             "brand" => "required|alpha_num",
