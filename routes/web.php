@@ -36,3 +36,7 @@ Route::post('/user/address/save', "App\Http\Controllers\User\AddressController@s
 
 Route::get('/user/review/create', "App\Http\Controllers\User\ReviewController@create")->name('user.review.create');
 Route::post('/user/review/save', "App\Http\Controllers\User\ReviewController@save")->name('user.review.save');
+
+#--------------------------lang
+
+Route::get('/lang/{lang}', "App\Http\Controllers\LanguageController@switchlang")->name('lang.switch');
