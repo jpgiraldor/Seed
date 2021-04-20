@@ -28,3 +28,8 @@ Route::get('/seed/score', 'App\Http\Controllers\Api\SeedApi@score')->name("api.s
 
 
 Route::get('/seed/{id}', 'App\Http\Controllers\Api\SeedApi@show')->name("api.seed.show");#este debe de ir de ultimo para que no coque con las rutas
+
+
+#----
+Route::get('/v3/products', 'App\Http\Controllers\Api\ProductApiV3@index')->name("api.v3.product.index");
+Route::get('/v3/products/paginate', 'App\Http\Controllers\Api\ProductApiV3@paginate')->name("api.v3.product.paginate");

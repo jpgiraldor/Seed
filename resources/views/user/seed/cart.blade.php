@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{__('text.shopping.cart.products_in_car')}}</div>
+                <div class="card-header">{{__('text.products_in_car')}}</div>
                     <div class="row justify-content-center">
                         
                         <div class="col-md-12">
@@ -18,7 +18,7 @@
                                     </li>
                                 @endforeach
                             </ul>
-                            {{__('text.user.seed.cart')}}: 
+                            {{__('text.seed.cart')}}: 
                             <form action="{{ route('user.seed.buy') }}">
                                 <div class="dropdown">
                                     <select class="btn btn-primary dropdown-toggle"name="ship_addr" type="button" id="ship_addr" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,7 +33,7 @@
                                         
                                     </select>
                                     <br><br>
-                                    {{ count($data['seeds']) }} {{__('text.shopping.cart.products_in_car')}}: ${{ $data['total'] }}
+                                    {{ count($data['seeds']) }} {{__('text.products_in_car')}}: ${{ $data['total'] }}
                                     <br><br>
                                     <input class="btn btn-primary" type="submit" value="{{__('text.shopping.cart.buy')}}">
                                 </div>

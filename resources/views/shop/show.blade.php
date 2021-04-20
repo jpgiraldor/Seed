@@ -23,24 +23,24 @@
                             <form method="post" action="{{ route('admin.seed.delete' , $data['seed']->getId()) }}">
                                 @csrf
                                 <input type="hidden" value="DELETE" />
-                                <button type="submit" class ='btn btn-danger' >{{__('text.admin.seed.show.delete')}}</button>
+                                <button type="submit" class ='btn btn-danger' >{{__('text.admin.delete')}}</button>
                             </form>
                         @else
                             <a href="{{ route('user.seed.add', ['id' => $data['seed']->getId()]) }}">{{__('text.cart.add')}}</a>
-                            <h6>{{__('text.customer.seed.show.comment')}}</h6>  
+                            <h6>{{__('text.add.comment')}}</h6>  
                             <form method="POST" action="{{ route('user.review.save') }}">
                                 @csrf
                                 <input type="number" placeholder=0 min=0 max=5 step="1" name="score" value="{{ old('score') }}" />
-                                <input type="text" placeholder={{__('text.customer.seed.show.comment.enter_content')}} name="content" value="{{ old('content') }}" />
+                                <input type="text" placeholder={{__('text.comment.enter_content')}} name="content" value="{{ old('content') }}" />
                                 <input type="hidden" name="seed" value="{{ $data['seed']->getId() }}" />
                                 <input type="hidden" name="user" value="{{ Auth::user()->id }}" />
                                 <input type="submit" value="Send" />
                             </form>
                         @endif
                     @else
-                            {{__('text.shop.show.login')}}
-                            <a href="{{ route('login') }}">{{__('text.shop.show.log')}}</a>
-                            <a href="{{ route('register') }}">{{__('text.shop.show.register')}}</a>
+                            {{__('text.show.login')}}
+                            <a href="{{ route('login') }}">{{__('text.show.log')}}</a>
+                            <a href="{{ route('register') }}">{{__('text.show.register')}}</a>
                     @endauth
                 </div>
             </div>
@@ -49,8 +49,8 @@
             @foreach($data["reviews"] as $review)
                 <div class="card" >           
                     <div class="card-body">
-                        <b>{{__('text.customer.seed.show.comment.score')}}: </b> {{ $review->getScore() }}<br />
-                        <b>{{__('text.customer.seed.show.comment.comment')}}: </b> {{ $review->getContent() }}<br />
+                        <b>{{__('text.comment.score')}}: </b> {{ $review->getScore() }}<br />
+                        <b>{{__('text.comment')}}: </b> {{ $review->getContent() }}<br />
                     </div>
                 </div>
                 <br/>
