@@ -45,7 +45,7 @@
 <section class="page-section bg-primary text-white mb-0" id="about">
     <div class="container">
         <!-- About Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-white">{{__('text.home.index.about')}}</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-white">{{__('text.about')}}</h2>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
@@ -54,8 +54,8 @@
         </div>
         <!-- About Section Content-->
         <div class="row">
-            <div class="col-lg-4 ml-auto"><p class="lead">{{__('text.home.index.freelancer')}}</p></div>
-            <div class="col-lg-4 mr-auto"><p class="lead">{{__('text.home.index.freelancer2')}}</p></div>
+            <div class="col-lg-4 ml-auto"><p class="lead">{{__('text.freelancer')}}</p></div>
+            <div class="col-lg-4 mr-auto"><p class="lead">{{__('text.freelancer2')}}</p></div>
         </div>
         <!-- About Section Button-->
 
