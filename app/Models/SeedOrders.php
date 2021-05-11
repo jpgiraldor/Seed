@@ -5,11 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Seed_order extends Model
+class SeedOrders extends Model
 {
     use HasFactory;
-    //attributes id, total, created_at, updated_at
-    protected $fillable = ['seed','order','amount'];
+    //attributes id, amount, seed ,order, created_at, updated_at
+    protected $fillable = [
+        'seed',
+        'order',
+        'amount'
+    ];
 
     public function getId()
     {
@@ -21,10 +25,6 @@ class Seed_order extends Model
         return $this->attributes['seed'];
     }
 
-    public function getOrder()
-    {
-        return $this->attributes['order'];
-    }
 
     public function getAmount()
     {
@@ -41,37 +41,32 @@ class Seed_order extends Model
         $this->attributes['seed'] = $new_seed;
     }
 
-    public function setOrder($new_order)
-    {
-        $this->attributes['order'] = $new_order;
-    }
 
     public function setAmount($new_amount)
     {
         $this->attributes['amount'] = $new_amount;
     }
 
-    public function seed(){
+    public function seed()
+    {
         return $this->belongsTo(Seed::class);
     }
 
-    public function order(){
+    public function order()
+    {
         return $this->belongsTo(Order::class);
     }
 
-    public static function validate($params) {
+    public static function validate($params)
+    {
         $seed = $params['seed'];
         $order = $params['order'];
         $amount = $params['amount'];
 
-        return Seed_order::create([
+        return SeedOrders::create([
             'seed' => $seed,
             'order' => $order,
             'amount' => $amount,
-        ]);  
-        
-
+        ]);
     }
-
-    
 }

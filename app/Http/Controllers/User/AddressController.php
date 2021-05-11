@@ -8,15 +8,16 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AddressController extends Controller { 
-    function create() {
+class AddressController extends Controller
+{
+
+    public function create()
+    {
         $data["addresses"] = [];
-        if(Auth::check()) {
-            
+        if (Auth::check()) {
             $userID = Auth::id();
             $addresses = Address::where('user', $userID)->get();
-            $data["addresses"] = $addresses;    
-            
+            $data["addresses"] = $addresses;
         }
         
         
@@ -24,8 +25,9 @@ class AddressController extends Controller {
     }
 
 
-    function save(Request $request) {
+    public function save(Request $request)
+    {
         Address::validate($request);
-        return back()->with('success','Elemento creado satifactoriamente!');
+        return back()->with('success', 'Elemento creado satifactoriamente!');
     }
 }

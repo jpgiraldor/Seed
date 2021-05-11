@@ -24,6 +24,7 @@ Route::get('/shop/show/{id}', "App\Http\Controllers\ShoppingController@show")->n
 Route::get('/admin/seed/create', "App\Http\Controllers\Admin\SeedController@create")->name('admin.seed.create');
 Route::post('/admin/seed/save', "App\Http\Controllers\Admin\SeedController@save")->name('admin.seed.save');
 Route::post('/admin/seed/delete/{id}', 'App\Http\Controllers\Admin\SeedController@delete')->name("admin.seed.delete");
+Route::get('/admin/order/list', 'App\Http\Controllers\Admin\OrderController@list')->name("admin.order.list");
 
 #---------------------------user
 Route::get('/user/seed/add/{id}', 'App\Http\Controllers\User\SeedController@add')->name("user.seed.add");
@@ -36,3 +37,5 @@ Route::post('/user/address/save', "App\Http\Controllers\User\AddressController@s
 
 Route::get('/user/review/create', "App\Http\Controllers\User\ReviewController@create")->name('user.review.create');
 Route::post('/user/review/save', "App\Http\Controllers\User\ReviewController@save")->name('user.review.save');
+
+Route::get('/user/order/list/{id}', "App\Http\Controllers\User\OrderController@list")->name('user.order.list');

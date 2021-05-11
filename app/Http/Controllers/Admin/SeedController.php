@@ -1,32 +1,36 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Seed;
 use phpDocumentor\Reflection\Types\Null_;
 use App\Models\Review;
-use App\Models\Seed_order;
+use App\Models\SeedOrders;
+use Lang;
 
-class SeedController extends Controller {
+class SeedController extends Controller
+{
 
-    public function create(){
-        $data = []; //to be sent to the view
-        $data["title"] = "Create seed"; 
+    public function create()
+    {
+        $data = [];
+        $data["title"] = "Create seed";
         $data["seeds"] = Seed::all();
-        return view('admin.seed.create')->with("data",$data);
+        return view('admin.seed.create')->with("data", $data);
     }
 
     public function save(Request $request)
-    {   
+    {
         Seed::validate($request);
-        return back()->with('success','Elemento creado satifactoriamente!');
-        //here goes the code to call the model and save it to the database
+        return back()->with('success', 'Elemento creado satifactoriamente!');
     }
 
-    public function delete($id){
-        $sords = Seed_order::where('seed', $id);
+    public function delete($id)
+    {
+        $sords = SeedOrders::where('seed', $id);
         $sords->delete();
 
         $revs = Review::where('seed', $id);
@@ -37,5 +41,4 @@ class SeedController extends Controller {
 
         return redirect()->route('home.index');
     }
-
 }

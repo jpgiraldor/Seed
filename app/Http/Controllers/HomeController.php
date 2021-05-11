@@ -9,13 +9,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data['seeds'] = Seed::by_pop();
-        return view('home.index')->with("data",$data);
+        $data['seeds'] = Seed::byPop();
+        return view('home.index')->with("data", $data);
     }
 
     public function home()
     {
-        $data['seeds'] = Seed::by_pop();
-        return redirect()->route('home.index')->with("data",$data);
+        $data['seeds'] = Seed::byPop();
+        return redirect()->route('home.index')->with("data", $data);
     }
 }

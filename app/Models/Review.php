@@ -10,22 +10,17 @@ use App\Models\Item;
 class Review extends Model
 {
     use HasFactory;
-    //attributes id, total, created_at, updated_at
-    protected $fillable = ['user','seed','score','content'];
+    //attributes id, score, content, seed, user, created_at, updated_at
+    protected $fillable = [
+        'user',
+        'seed',
+        'score',
+        'content'
+    ];
 
     public function getId()
     {
         return $this->attributes['id'];
-    }
-
-    public function getUser()
-    {
-        return $this->attributes['user'];
-    }
-
-    public function getSeed()
-    {
-        return $this->attributes['seed'];
     }
 
     public function getScore()
@@ -44,15 +39,8 @@ class Review extends Model
         $this->attributes['id'] = $id;
     }
 
-    public function setUser($new_user)
-    {
-        $this->attributes['user'] = $new_user;
-    }
 
-    public function setSeed($new_seed)
-    {
-        $this->attributes['seed'] = $new_seed;
-    }
+
 
     public function setScore($new_score)
     {
@@ -64,12 +52,14 @@ class Review extends Model
         $this->attributes['content'] = $new_content;
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(user::class);
     }
 
 
-    public static function validate(Request $request){
+    public static function validate(Request $request)
+    {
 
         $request->validate([
             "user" => "required|numeric",
@@ -79,9 +69,5 @@ class Review extends Model
         ]);
 
         Review::create($request->only(['user','seed','score','content']));
-
     }
-
-
-    
 }
