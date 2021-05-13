@@ -34,7 +34,7 @@
                     <b>{{__('text.seed.price')}}:</b> {{ $seed->getPrice() }}<br />
 
 
-                    <a href="{{ route('shop.show',$seed->getId()) }}" type = "button" class="btn btn-primary">{{__('text.seed.list.show')}}</a>
+                    <a href="{{ route('shop.show',$seed->getId()) }}" type = "button" class="btn btn-primary">{{__('text.admin.seed.list.show')}}</a>
 
                 </div>
             </div>

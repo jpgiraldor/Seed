@@ -12,6 +12,7 @@ use App\Models\Order;
 use App\Models\SeedOrders;
 use App\Models\Address;
 use App\Mail\OrderShipped;
+use App\Interfaces\PurchaseBill;
 
 class SeedController extends Controller
 {
@@ -97,5 +98,17 @@ class SeedController extends Controller
         $request->session()->forget('total');
         $data['seeds'] = Seed::byPop();
         return view('home.index')->with("data", $data);
+    }
+
+    public function pdf(Request $request)
+    {
+        $factura = app(PurchaseBill::class);
+        return $factura->generate(1);
+    }
+
+    public function excel(Request $request)
+    {
+        $factura = app(PurchaseBill::class);
+        return $factura->generate(1);
     }
 }
