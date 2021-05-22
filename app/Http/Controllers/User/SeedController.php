@@ -13,7 +13,7 @@ use App\Models\SeedOrders;
 use App\Models\Address;
 use App\Mail\OrderShipped;
 use App\Interfaces\PurchaseBill;
-
+use Maatwebsite\Excel\Facades\Excel;
 class SeedController extends Controller
 {
 
@@ -100,15 +100,12 @@ class SeedController extends Controller
         return view('home.index')->with("data", $data);
     }
 
-    public function pdf(Request $request)
+    public function bill(Request $request)
     {
-        $factura = app(PurchaseBill::class);
+        dd($request);
+        $factura = app()->makewith(PurchaseBill::class, ['type'=> $request['bill']]);
         return $factura->generate(1);
     }
 
-    public function excel(Request $request)
-    {
-        $factura = app(PurchaseBill::class);
-        return $factura->generate(1);
-    }
+
 }

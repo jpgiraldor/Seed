@@ -11,7 +11,7 @@ class OrderController extends Controller
     public function list($id)
     {
         $data = [];
-        $data["orders"] = Order::where('user', $id)->get();
+        $data["orders"] = Order::getOrders($id);
         return view('user.order.list')->with("data", $data);
     }
 }

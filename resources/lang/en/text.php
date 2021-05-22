@@ -44,8 +44,11 @@ return [
     'address.region' => 'Region',
     'address.street' => 'Street',
     'address.city' => 'City',
-    'seed.cart' => 'Select a shipping address'
-    
+    'seed.cart' => 'Select a shipping address',
+    'user' => 'User',
+    'date' => 'Date',
+    'total' => 'total',
+    'download.bill' => 'Download bill'
 
 
 

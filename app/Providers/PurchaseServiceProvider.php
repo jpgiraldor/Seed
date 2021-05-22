@@ -23,9 +23,12 @@ class PurchaseServiceProvider extends ServiceProvider
         #          ->give(function(){
         #              return new GeneratePdf();
         #          });
-        $this->app->bind(PurchaseBill::class, function (){
-            
-            return new GeneratePdf();
+        $this->app->bind(PurchaseBill::class, function ($app, $parameters){
+            if($parameters['type'] == 'pdf'){
+                return new GeneratePdf();    
+            }else{
+                return new GenerateExcel();
+            }
         });
 
     }
