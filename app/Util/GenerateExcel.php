@@ -6,19 +6,19 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PurchaseExport;
 class GenerateExcel implements PurchaseBill{
 
+    
     public function download()
     {
 
     }
 
-    public function view():View
-    {
 
-    }
 
-    public function generate($info)
+
+    public function generate($id)
     {
-        return Excel::download(new PurchaseExport, 'purchase.xlsx');  
+        #print(new PurchaseExport());
+        return Excel::download(new PurchaseExport($id), 'purchase.xlsx');  
     }
 
 }

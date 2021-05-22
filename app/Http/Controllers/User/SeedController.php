@@ -100,11 +100,10 @@ class SeedController extends Controller
         return view('home.index')->with("data", $data);
     }
 
-    public function bill(Request $request)
+    public function bill($id, Request $request)
     {
-        dd($request);
         $factura = app()->makewith(PurchaseBill::class, ['type'=> $request['bill']]);
-        return $factura->generate(1);
+        return $factura->generate($id);
     }
 
 

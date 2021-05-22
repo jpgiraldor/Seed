@@ -48,7 +48,10 @@ return [
     'user' => 'User',
     'date' => 'Date',
     'total' => 'total',
-    'download.bill' => 'Download bill'
+    'download.bill' => 'Download bill',
+    'amount' => 'Amount',
+    'total.cost' => 'Total cost',
+    'bill' => 'Bill'
 
 
 

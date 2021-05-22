@@ -1,5 +1,4 @@
 
-{{$titulo}}
 
 <div class="invoice-box">
     <table>
@@ -41,29 +40,31 @@
 
 
         <tr class="heading">
-            <td>Factura</td>
+            <td>{{__('text.bill')}}</td>
         </tr>
         <!--inicio for -->
+        @foreach($orders as $order)
         <tr class="item">
-            <td>Nombre semilla</td>
+            <td>{{__('text.seed.name')}}: </td>
         </tr>
 
         <tr class="item">
-            <td>Cantidad comprada</td>
+            <td>{{__('text.amount')}}:</td>
 
             <td>numero</td>
         </tr>
         <tr class="item">
-            <td>Costo unidad</td>
+            <td>{{__('text.seed.price')}}:</td>
 
             <td>$$$</td>
         </tr>
         <tr class="item last">
-            <td>Costo total</td>
+            <td>{{__('text.total.cost')}}:</td>
 
             <td>$$$</td>
         </tr>
         <!--final for -->
+        @endforeach
         <tr class="total">
             <td></td>
 

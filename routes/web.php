@@ -33,7 +33,7 @@ Route::get('/user/seed/cart', "App\Http\Controllers\User\SeedController@cart")->
 Route::get('/user/seed/buy', "App\Http\Controllers\User\SeedController@buy")->name('user.seed.buy');
 Route::get('/user/address/create', "App\Http\Controllers\User\AddressController@create")->name('user.address.create');
 Route::post('/user/address/save', "App\Http\Controllers\User\AddressController@save")->name('user.address.save');
-Route::post('/user/seed/bill', "App\Http\Controllers\User\SeedController@bill")->name('user.seed.bill');
+Route::post('/user/seed/bill/{id}', "App\Http\Controllers\User\SeedController@bill")->name('user.seed.bill');
 
 Route::get('/user/review/create', "App\Http\Controllers\User\ReviewController@create")->name('user.review.create');
 Route::post('/user/review/save', "App\Http\Controllers\User\ReviewController@save")->name('user.review.save');
