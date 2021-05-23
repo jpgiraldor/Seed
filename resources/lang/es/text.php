@@ -1,12 +1,14 @@
 <?php
 
+<?php
+
 return [
-    'listproducts'=>'Listar Productos',
+    'listproducts'=>'List Products',
     'about'=>'About',
     'freelancer'=>'Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.',
     'freelancer2'=>'You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!',
-    'home.index.send'=> 'enviar',
-    'admin.review.list.review'=> 'Mostrar reseña',
+    'home.index.send'=> 'send',
+    'admin.review.list.review'=> 'Show review',
     'admin.review.show.delete' => 'click to delete this row base on id',
     'admin.seed.create.create' => 'Create Seed',
     'seed.id' => 'Id',
@@ -44,8 +46,19 @@ return [
     'address.region' => 'Region',
     'address.street' => 'Street',
     'address.city' => 'City',
-    'seed.cart' => 'Select a shipping address'
-    
+    'seed.cart' => 'Select a shipping address',
+    'user' => 'User',
+    'date' => 'Date',
+    'total' => 'total',
+    'download.bill' => 'Download bill',
+    'amount' => 'Amount',
+    'total.cost' => 'Total cost',
+    'bill' => 'Bill',
+    'create.seed' => 'Create  Seed',
+    'view.orders' => 'View Orders',
+    'cart' => 'Cart',
+    'addresses' => 'Addresses',
+    'my.order' => 'My orders'
 
 
 

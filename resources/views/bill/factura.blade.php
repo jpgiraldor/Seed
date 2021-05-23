@@ -46,29 +46,28 @@
         @foreach($orders as $order)
         <tr class="item">
             <td>{{__('text.seed.name')}}: </td>
+
+            <td>{{$order->name}}</td>
         </tr>
 
         <tr class="item">
             <td>{{__('text.amount')}}:</td>
 
-            <td>numero</td>
+            <td>{{$order->amount}}</td>
         </tr>
         <tr class="item">
             <td>{{__('text.seed.price')}}:</td>
 
-            <td>$$$</td>
+            <td>{{$order->price}}</td>
         </tr>
         <tr class="item last">
             <td>{{__('text.total.cost')}}:</td>
 
-            <td>$$$</td>
+            <td>{{$order->price * $order->amount}} </td>
+            
         </tr>
         <!--final for -->
         @endforeach
-        <tr class="total">
-            <td></td>
 
-            <td>Total: $385.00</td>
-        </tr>
     </tbody></table>
 </div>

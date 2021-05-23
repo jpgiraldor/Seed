@@ -51,7 +51,12 @@ return [
     'download.bill' => 'Download bill',
     'amount' => 'Amount',
     'total.cost' => 'Total cost',
-    'bill' => 'Bill'
+    'bill' => 'Bill',
+    'create.seed' => 'Create  Seed',
+    'view.orders' => 'View Orders',
+    'cart' => 'Cart',
+    'addresses' => 'Addresses',
+    'my.order' => 'My orders'
 
 
 
