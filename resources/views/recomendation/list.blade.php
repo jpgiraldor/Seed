@@ -1,5 +1,5 @@
 
-{{print_r($prec)}}
+{{$data['request']}}
 
 <ul>
     

@@ -6,9 +6,10 @@
 <br>
 <div class="container">
     <h3>Ingrese el municipio donde seran sembradas las semillas</h3>
-    
+    <form method="POST" action="{{ route('recomendation.list') }}">
+        @csrf
         <input type="text"class="input-group mb-3"name="city"value="{{ old('city') }}">
-        <a href="{{ route('recomendation.list',city) }}" type = "button" class="btn btn-primary">{{__('text.seed.show')}}</a>
+        <input type="submit" value="Send" action="{{ route('recomendation.list') }}" />
     </form>
 </div>
 @endsection

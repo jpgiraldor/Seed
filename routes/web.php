@@ -46,4 +46,4 @@ Route::get('/lang/{lang}', "App\Http\Controllers\LanguageController@switchlang")
 
 
 Route::get('/recomendation/search',"App\Http\Controllers\RecomendationController@search")->name('recomendation.search');
-Route::get('/recomendation/list/{city}', "App\Http\Controllers\RecomendationController@list")->name('recomendation.list');
+Route::post('/recomendation/list', "App\Http\Controllers\RecomendationController@list")->name('recomendation.list');
