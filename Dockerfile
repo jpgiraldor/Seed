@@ -12,6 +12,7 @@ RUN composer install \
    --prefer-dist
 
 RUN php artisan key:generate
+RUN php artisan migrate:refresh
 RUN chmod -R 777 storage
 RUN chmod -R 777 bootstrap/cache/
 RUN a2enmod rewrite
