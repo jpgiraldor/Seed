@@ -71,6 +71,7 @@ class SeedController extends Controller
         $data = [];
         $data['title'] = "Buy";
 
+        $amount = $request->session()->get('amount');
         $seeds = $request->session()->get('seeds');
         $total = $request->session()->get('total', 0);
 
@@ -84,7 +85,7 @@ class SeedController extends Controller
             
             foreach ($seeds as $s) {
                 $seedID = $s[0];
-                $price = $s[2];
+                $price = $s[2]*$amount;
                 SeedOrders::validate([
                     'seed' => $seedID,
                     'order' => $order->getId(),

@@ -26,6 +26,7 @@
                                 <button type="submit" class ='btn btn-danger' >{{__('text.admin.delete')}}</button>
                             </form>
                         @else
+                            <input type="number" name="amount" value="{{ old('amount') }}" placeholder="Amount" />
                             <a href="{{ route('user.seed.add', ['id' => $data['seed']->getId()]) }}">{{__('text.cart.add')}}</a>
                             <h6>{{__('text.add.comment')}}</h6>  
                             <form method="POST" action="{{ route('user.review.save') }}">
