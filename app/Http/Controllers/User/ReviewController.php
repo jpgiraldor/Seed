@@ -19,7 +19,7 @@ class ReviewController extends Controller
     public function save(Request $request)
     {
         Review::validate($request);
-        return back()->with('success', 'Elemento creado satifactoriamente!');
+        return back()->with('success',Lang::get('text.element.created'));
     }
 
     public function list($id)

@@ -25,7 +25,7 @@ class SeedController extends Controller
     public function save(Request $request)
     {
         Seed::validate($request);
-        return back()->with('success', 'Elemento creado satifactoriamente!');
+        return back()->with('success', Lang::get('text.element.created'));
     }
 
     public function delete($id)

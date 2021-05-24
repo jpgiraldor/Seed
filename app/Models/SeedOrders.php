@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Facades\DB;
 class SeedOrders extends Model
 {
     use HasFactory;
@@ -68,5 +69,13 @@ class SeedOrders extends Model
             'order' => $order,
             'amount' => $amount,
         ]);
+    }
+
+
+    public static function getPurchase($id)
+    {
+        return DB::table('seed_orders')
+        ->join('seeds', 'seed_orders.seed', '=', 'seeds.id')
+        ->where('order', '=', $id)->get();
     }
 }

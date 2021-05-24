@@ -43,9 +43,24 @@ return [
     'show.register' => 'Register',
     'address.region' => 'Region',
     'address.street' => 'Street',
+    'address.phone' => 'Phone',
+    'address.info' => 'Additional info',
     'address.city' => 'City',
-    'seed.cart' => 'Select a shipping address'
-    
+    'seed.cart' => 'Select a shipping address',
+    'user' => 'User',
+    'date' => 'Date',
+    'total' => 'total',
+    'download.bill' => 'Download bill',
+    'amount' => 'Amount',
+    'total.cost' => 'Total cost',
+    'bill' => 'Bill',
+    'create.seed' => 'Create  Seed',
+    'view.orders' => 'View Orders',
+    'cart' => 'Cart',
+    'addresses' => 'Addresses',
+    'my.order' => 'My orders',
+    'address.add' => 'Add address',
+    'element.created' => 'Element created succesfully'
 
 
 

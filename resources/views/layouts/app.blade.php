@@ -43,13 +43,13 @@
                     @if(Auth::check())
 
                         @if(Auth::user()->isAdmin())
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('admin.seed.create') }}">Create Seed</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('admin.order.list') }}">View Orders</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('admin.seed.create') }}">{{__('text.create.seed')}}</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('admin.order.list') }}">{{__('text.view.orders')}}</a></li>
                             
                         @else
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('user.seed.cart') }}">Cart</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('user.address.create') }}">Addresses</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('user.order.list', Auth::user()->id) }}">My Orders</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('user.seed.cart') }}">{{__('text.cart')}}</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('user.address.create') }}">{{__('text.addresses')}}</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('user.order.list', Auth::user()->id) }}">{{__('text.my.order')}}</a></li>
                         @endif
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

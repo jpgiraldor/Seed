@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Add Address') }}</div>
+                <div class="card-header">{{__('text.address.add')}}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('user.address.save') }}">
@@ -23,7 +23,7 @@
 
                         <input type="hidden" name="user" value="{{ Auth::id() }}" />
                         <div class="form-group row">
-                            <label for="region" class="col-md-4 col-form-label text-md-right">{{ __('Region') }}</label>
+                            <label for="region" class="col-md-4 col-form-label text-md-right">{{__('text.address.region')}}</label>
 
                             <div class="col-md-6">
                                 <input id="region" type="text" class="form-control @error('region') is-invalid @enderror" name="region" value="{{ old('region') }}" required autocomplete="region" autofocus>
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{__('text.address.city')}}</label>
 
                             <div class="col-md-6">
                                 <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus>
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Street') }}</label>
+                            <label for="street" class="col-md-4 col-form-label text-md-right">{{__('text.address.street')}}</label>
 
                             <div class="col-md-6">
                                 <input id="street" type="text" class="form-control @error('street') is-invalid @enderror" name="street" value="{{ old('street') }}" required autocomplete="street">
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{__('text.address.phone')}}</label>
 
                             <div class="col-md-6">
                                 <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" required autocomplete="phone">
@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="additional_info" class="col-md-4 col-form-label text-md-right">{{ __('Additional Info') }}</label>
+                            <label for="additional_info" class="col-md-4 col-form-label text-md-right">{{__('text.address.info')}}</label>
 
                             <div class="col-md-6">
                                 <input id="additional_info" type="text" class="form-control" name="additional_info" autocomplete="additional_info">
@@ -89,7 +89,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{__('text.show.register')}}
                                 </button>
                             </div>
                         </div>

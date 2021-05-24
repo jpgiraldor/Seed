@@ -81,4 +81,10 @@ class Order extends Model
             'ship_addr' => $ship_addr,
         ]);
     }
+
+    public static function getOrders($id)
+    {
+        return Order::where('user', $id)->get();
+    }
+    
 }

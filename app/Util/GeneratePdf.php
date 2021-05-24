@@ -3,7 +3,9 @@ namespace App\Util;
 use App\Interfaces\PurchaseBill;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade as PDF;
-
+use App\Models\Order;
+use App\Models\Seed;
+use App\Models\SeedOrders;
 class GeneratePdf implements PurchaseBill {
 
     public function download()
@@ -11,10 +13,14 @@ class GeneratePdf implements PurchaseBill {
 
     }
 
-    public function generate(){
-        $pdf = app('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Esto falta ver como lo llenamos porque que mamera</h1>');
-        return $pdf->stream();
+    public function generate($id){
+
+        $orders=SeedOrders::getPurchase($id);
+        $data = [
+            'orders' => $orders
+        ];
+        return \PDF::loadView('bill.factura', $data)
+        ->stream('archivo.pdf'); #cambiar stream por download para descargar
 
     }
 
