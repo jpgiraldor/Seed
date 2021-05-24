@@ -28,6 +28,6 @@ class AddressController extends Controller
     public function save(Request $request)
     {
         Address::validate($request);
-        return back()->with('success', 'Elemento creado satifactoriamente!');
+        return back()->with('success', Lang::get('element.created'));
     }
 }

@@ -43,6 +43,8 @@ return [
     'show.register' => 'Register',
     'address.region' => 'Region',
     'address.street' => 'Street',
+    'address.phone' => 'Phone',
+    'address.info' => 'Additional info',
     'address.city' => 'City',
     'seed.cart' => 'Select a shipping address',
     'user' => 'User',
@@ -56,7 +58,9 @@ return [
     'view.orders' => 'View Orders',
     'cart' => 'Cart',
     'addresses' => 'Addresses',
-    'my.order' => 'My orders'
+    'my.order' => 'My orders',
+    'address.add' => 'Add address',
+    'element.created' => 'Element created succesfully'
 
 
 
