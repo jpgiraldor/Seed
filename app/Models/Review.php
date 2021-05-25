@@ -76,7 +76,7 @@ class Review extends Model
             "user" => "required|numeric",
             "seed" => "required|numeric",
             "score" => "required|numeric|between:0,5",
-            "content" => "required|alpha_num"
+            "content" => "required|string"
         ]);
 
         Review::create($request->only(['user','seed','score','content']));

@@ -27,14 +27,13 @@ class SeedOrdersFactory extends Factory
      */
     public function definition()
     {
-        $seed = Seed::inRandonOrder()->first();
+        $seed = Seed::inRandomOrder()->first();
         $order = Order::inRandomOrder()->first();
 
         return [
             'seed' => $seed->getId(),
             'order' => $order->getId(),
             'amount' => $this->faker->randomFloat(3, 1, 100),
-            'content' => Str::random(10),
         ];
     }
 }

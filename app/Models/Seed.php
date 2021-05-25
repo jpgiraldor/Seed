@@ -228,7 +228,7 @@ class Seed extends Model
         
         foreach ($reviews as $rev) {
             $score = $rev->getScore();
-            $seed = $rev->Seed;
+            $seed = $rev->getSeed();
             
             if (isset($acumPop[$seed]) == null) {
                 $acumPop[$seed] = 0;

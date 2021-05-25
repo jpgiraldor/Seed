@@ -24,8 +24,6 @@ class Address extends Model
          return $this->attributes['id'];
      }
 
-
-
      public function getRegion()
      {
          return $this->attributes['region'];

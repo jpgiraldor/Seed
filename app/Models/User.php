@@ -45,44 +45,44 @@ class User extends Authenticatable
         return $this->attributes['email'];
     }
     
-    public function setEmail($email)
-    {
-        $this->attributes['email'] = $email;
-    }
-
     public function getPassword()
     {
         return $this->attributes['password'];
-    }
-    
-    public function setPassword($password)
-    {
-        $this->attributes['password'] = $password;
     }
 
     public function getFirstname()
     {
         return $this->attributes['firstname'];
     }
-    
-    public function setFirstname($firstname)
-    {
-        $this->attributes['firstname'] = $firstname;
-    }
 
     public function getLastname()
     {
         return $this->attributes['lastname'];
     }
-    
-    public function setLastname($lastname)
-    {
-        $this->attributes['lastname'] = $lastname;
-    }
 
     public function getWallet()
     {
         return $this->attributes['wallet'];
+    }
+
+    public function setEmail($email)
+    {
+        $this->attributes['email'] = $email;
+    }
+    
+    public function setPassword($password)
+    {
+        $this->attributes['password'] = $password;
+    }
+    
+    public function setFirstname($firstname)
+    {
+        $this->attributes['firstname'] = $firstname;
+    }
+    
+    public function setLastname($lastname)
+    {
+        $this->attributes['lastname'] = $lastname;
     }
     
     public function setWallet($wallet)

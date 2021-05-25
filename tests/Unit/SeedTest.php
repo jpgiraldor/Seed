@@ -4,11 +4,13 @@ namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
-//use PHPUnit\Framework\TestCase; //actually useless garbage for database testing lmao 
-use Tests\TestCase; // literally wont work without this lmao laravel be like 'what is a fuckin namespace lol'
+use Tests\TestCase; 
 use App\Models\Seed;
 use App\Models\User;
 use App\Models\Review;
+use App\Models\Order;
+use App\Models\SeedOrders;
+use App\Models\Address;
 
 class SeedTest extends TestCase
 {
@@ -65,6 +67,46 @@ class SeedTest extends TestCase
         } 
     }
 
+    public function test_by_pop() {
+        $numUsers = 8;
+        $numAddress = 10;
+        $numSeeds = 20;
+        $numOrder = 5;
+        $numSeedOrders = 12;
+        User::factory()->count($numUsers)->create();
+        Address::factory()->count($numAddress)->create();
+        Seed::factory()->count($numSeeds)->create();
+        Order::factory()->count($numOrder)->create();
+        SeedOrders::factory()->count($numSeedOrders)->create();
+
+        $orders = SeedOrders::all();
+        $this->assertTrue(count($orders) > 0);
+
+        $count = array();
+        foreach($orders as $or) {
+            $seed = $or->getSeed();
+            if (isset($count[$seed]) == null) {
+                $count[$seed] = 0;
+            }
+            $count[$seed] += 1;
+        }
+
+
+        $byPop = Seed::byPop();
+        $this->assertTrue(count($byPop) > 0);
+
+        $last = -1;
+        foreach($byPop as $s) {
+            $c = $count[$s->getId()];
+            if($last == -1) {
+                $last = $c;
+            } else {
+                $this->assertTrue($c <= $last);
+            }
+        }
+
+    }
+
     public function test_by_score() {
         $numUsers = 8;
         $numSeeds = 20;
@@ -81,13 +123,15 @@ class SeedTest extends TestCase
 
         foreach($reviews as $rev) {
             $seed = $rev->getSeed();
-            if(array_key_exists($seed, $revCount)) {
-                $revCount[$seed] += 1;
-                $scores[$seed] += $rev->getScore();
-            } else {
-                $revCount[$seed] = 1;
-                $scores[$seed] = $rev->getScore();
+
+            if (isset($revCount[$seed]) == null) {
+                $revCount[$seed] = 0;
+                $scores[$seed] = 0;
             }
+            
+            $revCount[$seed] += 1;
+            $scores[$seed] += $rev->getScore();
+            
         }
         
         foreach($scores as $key => $score) {
@@ -99,7 +143,7 @@ class SeedTest extends TestCase
         
         $last = -1;
         foreach($byScore as $s) {
-            $count = $score[$s->getId()];
+            $count = $scores[$s->getId()];
             if($last == -1) {
                 $last = $count;
             } else {

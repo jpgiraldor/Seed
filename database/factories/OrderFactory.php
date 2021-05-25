@@ -27,7 +27,7 @@ class OrderFactory extends Factory
     public function definition()
     {   
         $user = User::inRandomOrder()->first();    
-        $address = Address:inRandomOrder()->first();
+        $address = Address::inRandomOrder()->first();
 
         return [
             'total' => $this->faker->randomFloat(3, 1, 100),
