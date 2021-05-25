@@ -3,6 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Review;
+use App\Models\User;
+use App\Models\Seed;
+
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ReviewFactory extends Factory
@@ -21,8 +25,13 @@ class ReviewFactory extends Factory
      */
     public function definition()
     {
+        $user = User::inRandomOrder()->first();
+        $seed = Seed::inRandomOrder()->first();
         return [
-            //
+            'user' => $user->getId(),
+            'seed' => $seed->getId(),
+            'score' => $this->faker->randomFloat(1, 0, 5),
+            'content'
         ];
     }
 }

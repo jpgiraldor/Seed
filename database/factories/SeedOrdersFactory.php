@@ -7,6 +7,10 @@ use App\Models\Seed;
 use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+use Illuminate\Support\Str;
+
+
+
 class SeedOrdersFactory extends Factory
 {
     /**
@@ -30,6 +34,7 @@ class SeedOrdersFactory extends Factory
             'seed' => $seed->getId(),
             'order' => $order->getId(),
             'amount' => $this->faker->randomFloat(3, 1, 100),
+            'content' => Str::random(10),
         ];
     }
 }
