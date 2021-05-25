@@ -24,7 +24,8 @@ class RecomendationController extends Controller
             $times=$month['avgDailyRainfall'];
             $anualrain += $times;
         }
-        $seed = Seed::where('water','>',$anualrain)->get();
+        $seed['seeds'] = Seed::where('water','>',$anualrain)->get();
+        #dd($seed['seeds'][0]['name']);
         return view('recomendation.list')->with("api", $seed);
         
     }

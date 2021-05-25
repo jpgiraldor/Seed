@@ -60,7 +60,13 @@ return [
     'addresses' => 'Addresses',
     'my.order' => 'My orders',
     'address.add' => 'Add address',
-    'element.created' => 'Element created succesfully'
+    'element.created' => 'Element created succesfully',
+    'foundation' => 'Foundation',
+    'foundation.name' => 'Name',
+    'foundation.email' => 'Email',
+    'foundation.description' => 'Descrition',
+    'foundation.donate' => 'donate',
+    'recomend'=> 'We recomend this seed'
 
 
 

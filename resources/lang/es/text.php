@@ -62,7 +62,13 @@ return [
     'addresses' => 'Direcciones',
     'my.order' => 'Mis ordenes',
     'address.add' => 'Agregar direccion',
-    'element.created' => 'Elemento creado satisfactoriamente'
+    'element.created' => 'Elemento creado satisfactoriamente',
+    'foundation' => 'Fundacion',
+    'foundation.name' => 'Nombre',
+    'foundation.email' => 'Correo',
+    'foundation.description' => 'Descripcion',
+    'foundation.donate' => 'Donar',
+    'recomend'=> 'Recomendamos esta semilla'
 
 
 
