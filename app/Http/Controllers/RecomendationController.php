@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\http;
+use App\Models\Seed;
 
 class RecomendationController extends Controller
 {
@@ -17,12 +18,20 @@ class RecomendationController extends Controller
     function list(Request $request)
     {   
         $data = Http::get("http://api.worldweatheronline.com/premium/v1/weather.ashx?key=a2b4d8d1d82942388bc223153212405&q={$request['city']},co&fx=no&cc=no&mca=yes&format=json")->json();
-        #$result = $data['result'];
-        #$prec = $result['precipitation'];
-        return view('recomendation.list')->with("data", $data);
+        $data = $data['data']['ClimateAverages'][0]['month'];
+        $anualrain=0;
+        foreach ($data as $month){
+            $times=$month['avgDailyRainfall'];
+            $anualrain += $times;
+        }
+        $seed = Seed::where('water','>',$anualrain)->get();
+        return view('recomendation.list')->with("api", $seed);
         
     }
 }
+//$data = $data['data']['ClimateAverages'][0]['month'][11]['avgDailyRainfall'];
+
+
 //https://history.openweathermap.org/data/2.5/aggregated/day?lat=25.2975&lon=91.5826&month=7&day=10&appid=f213d44a29429cecbcda752dbbb8e385
 //https://history.openweathermap.org/data/2.5/aggregated/year?q=London&appid={API key}
 //https://history.openweathermap.org/data/2.5/aggregated/day?q={$city},co&month=2&day=1&appid=f213d44a29429cecbcda752dbbb8e385

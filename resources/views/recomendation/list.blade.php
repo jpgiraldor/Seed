@@ -1,6 +1,10 @@
+@extends('layouts.app')
 
-{{$data['request']}}
 
-<ul>
-    
-</ul>
+@section('content')
+<br>
+<br>
+<div class="container">
+    {{$api}}
+</div>
+@endsection

@@ -19,6 +19,7 @@ Route::get('/', "App\Http\Controllers\HomeController@index")->name("home.index")
 Route::get('/home', "App\Http\Controllers\HomeController@index")->name('home');
 Route::get('/shop/list/{order?}', "App\Http\Controllers\ShoppingController@list")->name('shop.list');
 Route::get('/shop/show/{id}', "App\Http\Controllers\ShoppingController@show")->name('shop.show');
+Route::get('/foundation', "App\Http\Controllers\FoundationController@list")->name('foundation.list');
 
 #---------------------------admin
 Route::get('/admin/seed/create', "App\Http\Controllers\Admin\SeedController@create")->name('admin.seed.create');
