@@ -15,8 +15,13 @@
                     <b>User:</b> {{ $order->user }}<br />
                     <b>Date:</b> {{ $order->getDate() }}<br />
                     <b>Total:</b> {{ $order->total }}<br />
-
-
+                    <form method="post" action="{{ route('admin.order.delete' , $order->getId()) }}">
+                        @csrf
+                        <input type="hidden" value="DELETE" />
+                        <button type="submit" class ='btn btn-danger' >{{__('text.admin.delete')}}</button>
+                    
+                    </form>
+                    
                 </div>
             </div>
 

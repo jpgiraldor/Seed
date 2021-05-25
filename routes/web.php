@@ -25,9 +25,10 @@ Route::get('/admin/seed/create', "App\Http\Controllers\Admin\SeedController@crea
 Route::post('/admin/seed/save', "App\Http\Controllers\Admin\SeedController@save")->name('admin.seed.save');
 Route::post('/admin/seed/delete/{id}', 'App\Http\Controllers\Admin\SeedController@delete')->name("admin.seed.delete");
 Route::get('/admin/order/list', 'App\Http\Controllers\Admin\OrderController@list')->name("admin.order.list");
+Route::post('/admin/order/delete/{id}', 'App\Http\Controllers\Admin\OrderController@delete')->name("admin.order.delete");
 
 #---------------------------user
-Route::get('/user/seed/add/{id}', 'App\Http\Controllers\User\SeedController@add')->name("user.seed.add");
+Route::post('/user/seed/add/{id}', 'App\Http\Controllers\User\SeedController@add')->name("user.seed.add");
 Route::get('/user/seed/removeAll/', 'App\Http\Controllers\User\SeedController@removeAll')->name("user.seed.removeAll");
 Route::get('/user/seed/cart', "App\Http\Controllers\User\SeedController@cart")->name('user.seed.cart');
 Route::get('/user/seed/buy', "App\Http\Controllers\User\SeedController@buy")->name('user.seed.buy');
@@ -43,3 +44,6 @@ Route::get('/user/order/list/{id}', "App\Http\Controllers\User\OrderController@l
 
 Route::get('/lang/{lang}', "App\Http\Controllers\LanguageController@switchlang")->name('lang.switch');
 
+
+Route::get('/recomendation/search',"App\Http\Controllers\RecomendationController@search")->name('recomendation.search');
+Route::post('/recomendation/list', "App\Http\Controllers\RecomendationController@list")->name('recomendation.list');
