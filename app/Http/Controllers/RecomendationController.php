@@ -17,9 +17,8 @@ class RecomendationController extends Controller
     function list(Request $request)
     {   
         $data = Http::get("http://api.worldweatheronline.com/premium/v1/weather.ashx?key=a2b4d8d1d82942388bc223153212405&q={$request['city']},co&fx=no&cc=no&mca=yes&format=json")->json();
-        #$result = $data['result'];
-        #$prec = $result['precipitation'];
-        return view('recomendation.list')->with("data", $data);
+        #dd($data['data']['ClimateAverages'][0]['month'][0]['avgDailyRainfall']);
+        return view('recomendation.list')->with("data",$data);
         
     }
 }

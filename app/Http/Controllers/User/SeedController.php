@@ -40,6 +40,7 @@ class SeedController extends Controller
 
     public function add($id, Request $request)
     {
+        dd($request['amount']);
         $seedID = (int) $id;
         $seed = Seed::firstWhere('id', $seedID);
 
