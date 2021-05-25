@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\SeedOrders;
+use App\Models\Seed;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SeedOrdersFactory extends Factory
@@ -21,8 +23,13 @@ class SeedOrdersFactory extends Factory
      */
     public function definition()
     {
+        $seed = Seed::inRandonOrder()->first();
+        $order = Order::inRandomOrder()->first();
+
         return [
-            //
+            'seed' => $seed->getId(),
+            'order' => $order->getId(),
+            'amount' => $this->faker->randomFloat(3, 1, 100),
         ];
     }
 }

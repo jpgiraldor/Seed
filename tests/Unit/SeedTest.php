@@ -60,14 +60,7 @@ class SeedTest extends TestCase
             } else {
                 $this->assertTrue($seed->getGermination() <= $last);
             }
-        }
-
-    
-    
-    
-    
-    
-    
+        } 
     }
     
 }

@@ -24,7 +24,6 @@ class SeedFactory extends Factory
     public function definition()
     {   
         $brands =  ['A', 'B', 'C', 'D', 'E'];
-        $waterVals = ['wA', 'wB', 'wC', 'wD', 'wE'];
         $groundVals = ['gA', 'gB', 'gC', 'gD', 'gE'];
         $droughtVals = ['dA', 'dB', 'dC', 'dD', 'dE'];
         $typeVals = ['tA', 'tB', 'tC', 'tD', 'tE'];
@@ -37,7 +36,7 @@ class SeedFactory extends Factory
             'name' => Str::random(10),
             'brand' => $brands[rand(0, count($brands) - 1)],
             'weight'=> $this->faker->randomFloat(3, 1, 100),
-            'water' => $waterVals[rand(0, count($waterVals) - 1)], 
+            'water' => $this->faker->randomFloat(3, 1, 100), 
             'ground'=> $groundVals[rand(0, count($groundVals) - 1)],
             'drought'=> $droughtVals[rand(0, count($droughtVals) - 1)],
             'germination'=> $this->faker->randomFloat(3, 1, 100),

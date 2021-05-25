@@ -3,7 +3,12 @@
 namespace Database\Factories;
 
 use App\Models\Order;
+use App\Models\User;
+use App\Models\Address;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+
 
 class OrderFactory extends Factory
 {
@@ -20,9 +25,15 @@ class OrderFactory extends Factory
      * @return array
      */
     public function definition()
-    {
+    {   
+        $user = User::inRandomOrder()->first();    
+        $address = Address:inRandomOrder()->first();
+
         return [
-            //
+            'total' => $this->faker->randomFloat(3, 1, 100),
+            'user' => $user->getId(),
+            'ship_addr' => $address->getId(),
+            'date' => now(),
         ];
     }
 }

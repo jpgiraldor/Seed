@@ -44,10 +44,10 @@ class SeedController extends Controller
         $seed = Seed::firstWhere('id', $seedID);
 
         if ($seed != null) {
-            $amount = $seed->$request['amount'];
+            $amount = $request['amount'];
             $request->session()->push(
                 'seeds',
-                [$seed->getID(), $seed->getName(), $seed->getPrice(), $amount];
+                [$seed->getID(), $seed->getName(), $seed->getPrice(), $amount]
             );
             
             $total = $request->session()->get('total', 0);
