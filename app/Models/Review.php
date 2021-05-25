@@ -33,14 +33,16 @@ class Review extends Model
         return $this->attributes['content'];
     }
 
+    public function getSeed() 
+    {
+        return $this->attributes['seed'];
+    }
+
 #----------------------------------------------------------------
     public function setId($id)
     {
         $this->attributes['id'] = $id;
     }
-
-
-
 
     public function setScore($new_score)
     {
@@ -52,11 +54,20 @@ class Review extends Model
         $this->attributes['content'] = $new_content;
     }
 
-    public function user()
+    public function setSeed($seed) 
     {
-        return $this->belongsTo(user::class);
+        $this->attributes['seed'] = $seed;
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function seed() 
+    {
+        return $this->belongsTo(Seed::class);
+    }
 
     public static function validate(Request $request)
     {
