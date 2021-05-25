@@ -20,7 +20,7 @@ class GeneratePdf implements PurchaseBill {
             'orders' => $orders
         ];
         return \PDF::loadView('bill.factura', $data)
-        ->stream('archivo.pdf'); #cambiar stream por download para descargar
+        ->download('archivo.pdf'); #cambiar stream por download para descargar
 
     }
 
