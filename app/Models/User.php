@@ -33,6 +33,13 @@ class User extends Authenticatable
 
     protected $casts = ['email_verified_at' => 'datetime',];
 
+
+
+    public function getId() 
+    {
+        return $this->attributes['id'];
+    }
+    
     public function getEmail()
     {
         return $this->attributes['email'];
