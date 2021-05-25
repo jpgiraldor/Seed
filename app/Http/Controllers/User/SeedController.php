@@ -40,18 +40,18 @@ class SeedController extends Controller
 
     public function add($id, Request $request)
     {
-        dd($request['amount']);
         $seedID = (int) $id;
         $seed = Seed::firstWhere('id', $seedID);
 
         if ($seed != null) {
+            $amount = $seed->$request['amount'];
             $request->session()->push(
                 'seeds',
-                [$seed->getID(), $seed->getName(), $seed->getPrice()]
+                [$seed->getID(), $seed->getName(), $seed->getPrice(), $amount];
             );
             
             $total = $request->session()->get('total', 0);
-            $total += $seed->getPrice();
+            $total += $seed->getPrice() * $amount;
             $request->session()->put('total', $total);
         }
 
