@@ -29,7 +29,7 @@ Route::get('/admin/order/list', 'App\Http\Controllers\Admin\OrderController@list
 Route::post('/admin/order/delete/{id}', 'App\Http\Controllers\Admin\OrderController@delete')->name("admin.order.delete");
 
 #---------------------------user
-Route::get('/user/seed/add/{id}', 'App\Http\Controllers\User\SeedController@add')->name("user.seed.add");
+Route::post('/user/seed/add/{id}', 'App\Http\Controllers\User\SeedController@add')->name("user.seed.add");
 Route::get('/user/seed/removeAll/', 'App\Http\Controllers\User\SeedController@removeAll')->name("user.seed.removeAll");
 Route::get('/user/seed/cart', "App\Http\Controllers\User\SeedController@cart")->name('user.seed.cart');
 Route::get('/user/seed/buy', "App\Http\Controllers\User\SeedController@buy")->name('user.seed.buy');

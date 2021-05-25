@@ -6,32 +6,11 @@
             <td colspan="2">
                 <table>
                     <tbody><tr>
-                        <td class="title">
-                        </td>
-
-                        <td>
-                            
-                            fecha de creacion<br>
-                        </td>
-                    </tr>
+   
                 </tbody></table>
             </td>
         </tr>
-        <tr class="information">
-            <td colspan="2">
-                <table>
-                    <tbody><tr>
 
-
-                        <td>
-                            Nombre de la persona.<br>
-                            Apellido de la persona<br>
-                            correo de la persona
-                        </td>
-                    </tr>
-                </tbody></table>
-            </td>
-        </tr>
 
         <br/>
         <br/>

@@ -15,7 +15,7 @@ class CreateSeedsTable extends Migration{
             $table->text('name');
             $table->text('brand');
             $table->double('weight',15,4);
-            $table->text('water');
+            $table->double('water',15,4);
             $table->text('ground');
             $table->text('drought');
             $table->double('germination',15,4);
