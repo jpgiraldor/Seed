@@ -49,7 +49,6 @@ class Address extends Model
          return $this->attributes['additional_info'];
      }
      
-
      public function setRegion($new_region)
      {
          $this->attributes['region'] = $new_region;
@@ -75,7 +74,6 @@ class Address extends Model
          $this->attributes['additional_info'] = $new_additional_info;
      }
      
-
      public function user()
      {
          return $this->belongsTo(User::class);

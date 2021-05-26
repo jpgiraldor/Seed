@@ -82,5 +82,4 @@ class Order extends Model
     {
         return Order::where('user', $id)->get();
     }
-    
 }

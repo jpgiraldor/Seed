@@ -18,25 +18,17 @@ class OrderController extends Controller
 
     public function delete($id)
     {
-        $sord = SeedOrders::where('order',$id);
+        $sord = SeedOrders::where('order', $id);
         $sord->delete();
-        
         $ord = Order::where('id', $id);
         $ord->delete();
-
-        
-
         return redirect()->route('admin.order.list');
     }
 
     public function modify($id)
     {
-        
         $ord = Order::where('id', $id);
         $ord->delete();
-
-        
-
         return redirect()->route('admin.order.list');
     }
 }

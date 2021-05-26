@@ -14,6 +14,7 @@ use App\Models\Address;
 use App\Mail\OrderShipped;
 use App\Interfaces\PurchaseBill;
 use Maatwebsite\Excel\Facades\Excel;
+
 class SeedController extends Controller
 {
 
@@ -107,6 +108,4 @@ class SeedController extends Controller
         $factura = app()->makewith(PurchaseBill::class, ['type'=> $request['bill']]);
         return $factura->generate($id);
     }
-
-
 }
