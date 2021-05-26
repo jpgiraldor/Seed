@@ -9,11 +9,11 @@
         <div class="col-md-8">
             <nav class="navbar navbar-light" style="background-color: #2c3e50;">    
             
-                <a  class="nav-link" href="/shop/list/price">{{__('text.seed.price')}}</a>
-                <a  class="nav-link" href="/shop/list/water">{{__('text.seed.water')}} </a>
-                <a  class="nav-link" href="/shop/list/germination">{{__('text.seed.germination')}} </a>
-                <a  class="nav-link" href="/shop/list/score">{{__('text.comment.score')}} </a>
-                <a  class="nav-link" href="/shop/list/popularity"> {{__('text.popularity')}} </a>
+                <a  class="nav-link" href="/public/shop/list/price">{{__('text.seed.price')}}</a>
+                <a  class="nav-link" href="/public/shop/list/water">{{__('text.seed.water')}} </a>
+                <a  class="nav-link" href="/public/shop/list/germination">{{__('text.seed.germination')}} </a>
+                <a  class="nav-link" href="/public/shop/list/score">{{__('text.comment.score')}} </a>
+                <a  class="nav-link" href="/public/shop/list/popularity"> {{__('text.popularity')}} </a>
                 <form type='POST' class="form-inline my-2 my-lg-0">
                 <!--@csrf -->
                     <input class="form-control ml-sm-2" name='query' type='search' >
