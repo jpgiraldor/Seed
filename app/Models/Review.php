@@ -33,11 +33,10 @@ class Review extends Model
         return $this->attributes['content'];
     }
 
-    public function getSeed() 
+    public function getSeed()
     {
         return $this->attributes['seed'];
     }
-
 #----------------------------------------------------------------
     public function setId($id)
     {
@@ -54,7 +53,7 @@ class Review extends Model
         $this->attributes['content'] = $new_content;
     }
 
-    public function setSeed($seed) 
+    public function setSeed($seed)
     {
         $this->attributes['seed'] = $seed;
     }
@@ -64,7 +63,7 @@ class Review extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function seed() 
+    public function seed()
     {
         return $this->belongsTo(Seed::class);
     }

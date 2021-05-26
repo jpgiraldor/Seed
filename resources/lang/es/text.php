@@ -68,7 +68,8 @@ return [
     'foundation.email' => 'Correo',
     'foundation.description' => 'Descripcion',
     'foundation.donate' => 'Donar',
-    'recomend'=> 'Recomendamos esta semilla'
+    'recomend'=> 'Recomendamos esta semilla',
+    'recomendation'=>'Recomendaciones'
 
 
 

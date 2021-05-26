@@ -43,9 +43,7 @@ class ShoppingController extends Controller
 
     public function pop()
     {
-
-            $data['seeds'] = Seed::byPop();
-
+        $data['seeds'] = Seed::byPop();
         return view('home.index')->with("data", $data);
     }
 

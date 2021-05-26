@@ -66,7 +66,8 @@ return [
     'foundation.email' => 'Email',
     'foundation.description' => 'Descrition',
     'foundation.donate' => 'donate',
-    'recomend'=> 'We recomend this seed'
+    'recomend'=> 'We recomend this seed',
+    'recomendation'=>'Recomendations'
 
 
 
