@@ -34,10 +34,6 @@ class Order extends Model
     }
 
 
-    public function setId($id)
-    {
-        $this->attributes['id'] = $id;
-    }
 
 #-----------------------------------------------------
 

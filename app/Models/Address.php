@@ -49,13 +49,6 @@ class Address extends Model
          return $this->attributes['additional_info'];
      }
      
-     
-     public function setId($id)
-     {
-         $this->attributes['id'] = $id;
-     }
-
-
 
      public function setRegion($new_region)
      {

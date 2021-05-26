@@ -32,10 +32,7 @@ class SeedOrders extends Model
         return $this->attributes['amount'];
     }
 #----------------------------------------------------------------
-    public function setId($id)
-    {
-        $this->attributes['id'] = $id;
-    }
+
 
     public function setSeed($new_seed)
     {
